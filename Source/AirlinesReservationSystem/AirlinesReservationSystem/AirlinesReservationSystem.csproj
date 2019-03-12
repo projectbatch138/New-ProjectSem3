@@ -182,6 +182,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AirlinesController.cs" />
+    <Compile Include="IReponsitory\GenericReponsitory.cs" />
+    <Compile Include="IReponsitory\IGenericRepository.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Airline.cs" />
     <Compile Include="Models\Airport.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -200,7 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Model1.cs" />
+    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -213,6 +217,7 @@
     <Compile Include="Models\SeatClass.cs" />
     <Compile Include="Models\SeatDetailByFlight.cs" />
     <Compile Include="Models\SeatNumber.cs" />
+    <Compile Include="ReponsitoryModel\ReponsitoryAirlines.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +276,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Airlines\Create.cshtml" />
+    <Content Include="Views\Airlines\Delete.cshtml" />
+    <Content Include="Views\Airlines\Details.cshtml" />
+    <Content Include="Views\Airlines\Edit.cshtml" />
+    <Content Include="Views\Airlines\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
