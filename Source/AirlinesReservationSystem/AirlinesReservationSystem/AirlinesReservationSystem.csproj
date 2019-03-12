@@ -182,37 +182,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Airline.cs" />
-    <Compile Include="Airport.cs" />
+    <Compile Include="Models\Airline.cs" />
+    <Compile Include="Models\Airport.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Booking_Ticket.cs" />
+    <Compile Include="Models\Booking_Ticket.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DiscountDetail.cs" />
-    <Compile Include="Flight.cs" />
+    <Compile Include="Models\DiscountDetail.cs" />
+    <Compile Include="Models\Flight.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Location.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Plane.cs" />
-    <Compile Include="Price.cs" />
+    <Compile Include="Models\Plane.cs" />
+    <Compile Include="Models\Price.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuantitySeatClass.cs" />
-    <Compile Include="ReservationMod.cs" />
-    <Compile Include="Router.cs" />
-    <Compile Include="SeatClass.cs" />
-    <Compile Include="SeatDetailByFlight.cs" />
-    <Compile Include="SeatNumber.cs" />
+    <Compile Include="Models\QuantitySeatClass.cs" />
+    <Compile Include="Models\ReservationMod.cs" />
+    <Compile Include="Models\Router.cs" />
+    <Compile Include="Models\SeatClass.cs" />
+    <Compile Include="Models\SeatDetailByFlight.cs" />
+    <Compile Include="Models\SeatNumber.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
