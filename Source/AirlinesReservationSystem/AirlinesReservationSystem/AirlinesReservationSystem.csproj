@@ -183,8 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AirlinesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAirlinesController.cs" />
     <Compile Include="Areas\Admin\IReponsitory\GenericReponsitory.cs" />
     <Compile Include="Areas\Admin\IReponsitory\IGenericRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -234,8 +233,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -281,14 +278,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Airlines\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Airlines\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Airlines\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Airlines\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Airlines\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirlines\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirlines\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirlines\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirlines\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirlines\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Content\" />
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
