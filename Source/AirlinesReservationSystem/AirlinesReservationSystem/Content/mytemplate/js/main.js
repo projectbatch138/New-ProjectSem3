@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
       $('#form-submit .date').datepicker({
       });
 
-      var owl = $("#owl-suiteroom");
+      var owl = $("#owl-promotion");
 
         owl.owlCarousel({
           
