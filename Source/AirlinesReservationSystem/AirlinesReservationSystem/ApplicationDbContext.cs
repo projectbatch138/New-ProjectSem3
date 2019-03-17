@@ -13,7 +13,7 @@ namespace AirlinesReservationSystem
         }
 
         public virtual DbSet<Airline> Airlines { get; set; }
-        public virtual DbSet<Airport> Airports { get; set; }
+        public virtual DbSet<Airports> Airports { get; set; }
         public virtual DbSet<Booking_Ticket> Booking_Ticket { get; set; }
         public virtual DbSet<DiscountDetail> DiscountDetails { get; set; }
         public virtual DbSet<Flight> Flights { get; set; }
@@ -41,7 +41,7 @@ namespace AirlinesReservationSystem
                 .Property(e => e.Slogan)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Airport>()
+            modelBuilder.Entity<Airports>()
                 .Property(e => e.AirportIATACode)
                 .IsUnicode(false);
 

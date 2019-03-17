@@ -8,7 +8,7 @@ namespace AirlinesReservationSystem
 
     public partial class Booking_Ticket
     {
-        public int Booking_TicketId { get; set; }
+       public int Booking_TicketId { get; set; }
 
         public int UserId { get; set; }
 

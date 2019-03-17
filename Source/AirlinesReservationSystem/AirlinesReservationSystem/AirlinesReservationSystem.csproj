@@ -186,6 +186,10 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminAirlinesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAirportsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminBooking_TicketController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminDiscountDetailsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminFlightsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PlanesController.cs" />
@@ -198,6 +202,10 @@
     <Compile Include="Areas\Admin\Controllers\SeatNumberController.cs" />
     <Compile Include="Areas\Admin\IReponsitory\GenericReponsitory.cs" />
     <Compile Include="Areas\Admin\IReponsitory\IGenericRepository.cs" />
+    <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryDiscountDetail.cs" />
+    <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryFlights.cs" />
+    <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryAirports.cs" />
+    <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryBookingTicket.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryLocations.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryPlane.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryPrices.cs" />
@@ -209,7 +217,7 @@
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatNumber.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Airline.cs" />
-    <Compile Include="Models\Airport.cs" />
+    <Compile Include="Models\Airports.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -344,6 +352,26 @@
     <Content Include="Content\mytemplate\img\newlogo.psd" />
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBooking_Ticket\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBooking_Ticket\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBooking_Ticket\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBooking_Ticket\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBooking_Ticket\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirports\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirports\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirports\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirports\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAirports\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDiscountDetails\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDiscountDetails\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDiscountDetails\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDiscountDetails\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDiscountDetails\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminFlights\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminFlights\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminFlights\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminFlights\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminFlights\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Scripts\dashboard.js" />

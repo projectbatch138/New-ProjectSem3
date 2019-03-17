@@ -1,0 +1,59 @@
+﻿@model AirlinesReservationSystem.Flight
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Flight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RouterId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouterId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dept_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dept_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arr_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arr_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaneId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaneId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Flightid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AirlinesReservationSystem.Flight>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RouterId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dept_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arr_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaneId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouterId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dept_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arr_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaneId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Flightid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Flightid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Flightid })
+        </td>
+    </tr>
+}
+
+</table>

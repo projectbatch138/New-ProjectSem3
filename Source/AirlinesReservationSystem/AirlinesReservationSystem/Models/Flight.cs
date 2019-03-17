@@ -8,7 +8,7 @@ namespace AirlinesReservationSystem
 
     public partial class Flight
     {
-        public int Flightid { get; set; }
+       public int Flightid { get; set; }
 
         public int RouterId { get; set; }
 
