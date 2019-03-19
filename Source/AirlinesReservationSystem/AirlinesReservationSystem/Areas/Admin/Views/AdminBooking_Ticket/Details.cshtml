@@ -1,0 +1,91 @@
+﻿@model AirlinesReservationSystem.Booking_Ticket
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking_Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountBySeatClassId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountBySeatClassId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountBySkymiles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountBySkymiles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountByEarly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountByEarly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatDetailByFlightId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatDetailByFlightId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationModId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservationModId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Booking_TicketId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
