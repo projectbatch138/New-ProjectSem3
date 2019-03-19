@@ -14,12 +14,13 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
     public class AdminAirportsController : Controller
     {
         private ReponsitoryAirports _AirportRepo = new ReponsitoryAirports();
+        private ReponsitoryLocations _LocationRepo = new ReponsitoryLocations();
 
         // GET: Admin/AdminAirports
         public ActionResult Index()
         {
             var Airports = _AirportRepo.SelectAll();
-            return View();
+            return View(Airports);
         }
 
         // GET: Admin/AdminAirports/Details/5
@@ -41,6 +42,7 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         // GET: Admin/AdminAirports/Create
         public ActionResult Create()
         {
+            ViewBag.LocationId = new SelectList(_LocationRepo.SelectAll(), "LocationId", "City");
             return View();
         }
 
@@ -51,9 +53,9 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AirportId,AirportName,AirportIATACode,LocationId")] Airports airports)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                ViewBag.LocationId = new SelectList(_LocationRepo.SelectAll(), "LocationId", "City");
                 return View(airports);
             }
             try
@@ -80,6 +82,7 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.LocationId = new SelectList(_LocationRepo.SelectAll(), "LocationId", "City");
             return View(airports);
         }
 
@@ -90,8 +93,9 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AirportId,AirportName,AirportIATACode,LocationId")] Airports airports)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                ViewBag.LocationId = new SelectList(_LocationRepo.SelectAll(), "LocationId", "City");
                 return View(airports);
             }
 

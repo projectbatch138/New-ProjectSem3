@@ -8,6 +8,11 @@ namespace AirlinesReservationSystem
 
     public partial class Airline
     {
+        public Airline()
+        {
+            Planes = new HashSet<Plane>();
+        }
+        [Key]
         public int AirlineId { get; set; }
 
         [Required]
@@ -19,5 +24,7 @@ namespace AirlinesReservationSystem
 
         [StringLength(250)]
         public string Slogan { get; set; }
+
+        public virtual ICollection<Plane> Planes { get; set; }
     }
 }

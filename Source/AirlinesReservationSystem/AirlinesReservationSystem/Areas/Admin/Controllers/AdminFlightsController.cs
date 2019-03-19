@@ -14,12 +14,14 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
     public class AdminFlightsController : Controller
     {
         private ReponsitoryFlights _FlightRepo = new ReponsitoryFlights();
+        private ReponsitoryRouter _RouterRepo = new ReponsitoryRouter();
+        private ReponsitoryPlane _PlaneRepo = new ReponsitoryPlane();
 
         // GET: Admin/AdminFlights
         public ActionResult Index()
         {
             var Flights = _FlightRepo.SelectAll();
-            return View();
+            return View(Flights);
         }
 
         // GET: Admin/AdminFlights/Details/5
@@ -40,6 +42,8 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         // GET: Admin/AdminFlights/Create
         public ActionResult Create()
         {
+            ViewBag.DataRouter = new SelectList(_RouterRepo.SelectAll(), "RouterId", "RouterName");
+            ViewBag.DataPlane = new SelectList(_PlaneRepo.SelectAll(), "PlaneId", "PlaneName");
             return View();
         }
 
@@ -50,9 +54,10 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Flightid,RouterId,Dept_Time,Arr_Time,Status,PlaneId")] Flight flight)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                ViewBag.DataRouter = new SelectList(_RouterRepo.SelectAll(), "RouterId", "RouterName");
+                ViewBag.DataPlane = new SelectList(_PlaneRepo.SelectAll(), "PlaneId", "PlaneName");
                 return View(flight);
             }
             try
@@ -66,7 +71,6 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
 
-            return View(flight);
         }
 
         // GET: Admin/AdminFlights/Edit/5
@@ -81,6 +85,8 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.DataRouter = new SelectList(_RouterRepo.SelectAll(), "RouterId", "RouterName");
+            ViewBag.DataPlane = new SelectList(_PlaneRepo.SelectAll(), "PlaneId", "PlaneName");
             return View(flight);
         }
 
@@ -91,9 +97,11 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Flightid,RouterId,Dept_Time,Arr_Time,Status,PlaneId")] Flight flight)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return View(discountDetail);
+                ViewBag.DataRouter = new SelectList(_RouterRepo.SelectAll(), "RouterId", "RouterName");
+                ViewBag.DataPlane = new SelectList(_PlaneRepo.SelectAll(), "PlaneId", "PlaneName");
+                return View(flight);
             }
 
             try

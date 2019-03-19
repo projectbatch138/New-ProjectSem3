@@ -1,0 +1,43 @@
+﻿@model AirlinesReservationSystem.QuantitySeatClass
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QuantitySeatClass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Plane.PlaneName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plane.PlaneName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatClass.SeatClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatClass.SeatClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.QuantitySeatClassId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

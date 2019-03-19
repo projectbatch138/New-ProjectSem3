@@ -9,13 +9,18 @@ namespace AirlinesReservationSystem
     [Table("QuantitySeatClass")]
     public partial class QuantitySeatClass
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [Required]
         public int QuantitySeatClassId { get; set; }
-
+        [Required]
         public int PlaneId { get; set; }
 
         public int Quantity { get; set; }
-
+        [Required]
         public int SeatClassId { get; set; }
+
+        public virtual SeatClass SeatClass { get; set; }
+
+        public virtual Plane Plane { get; set; }
     }
 }

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AirlinesReservationSystem.SeatNumber>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatClass.SeatClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plane.PlaneName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatClass.SeatClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plane.PlaneName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SeatNumberId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SeatNumberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SeatNumberId })
+        </td>
+    </tr>
+}
+
+</table>

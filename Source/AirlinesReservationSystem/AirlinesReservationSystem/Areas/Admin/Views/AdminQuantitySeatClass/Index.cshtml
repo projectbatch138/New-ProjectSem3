@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AirlinesReservationSystem.QuantitySeatClass>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Plane.PlaneName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatClass.SeatClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plane.PlaneName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatClass.SeatClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuantitySeatClassId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuantitySeatClassId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuantitySeatClassId })
+        </td>
+    </tr>
+}
+
+</table>

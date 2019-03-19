@@ -8,6 +8,6 @@ namespace AirlinesReservationSystem.Areas.Admin.ReponsitoryModel
 {
     public class ReponsitoryRouter : GenericReponsitory<Router>
     {
-        
+
     }
 }

@@ -8,6 +8,12 @@ namespace AirlinesReservationSystem
 
     public partial class Location
     {
+        public Location()
+        {
+            Airports = new HashSet<Airports>();
+        }
+        [Key]
+        [Required]
         public int LocationId { get; set; }
 
         [Required]
@@ -26,5 +32,7 @@ namespace AirlinesReservationSystem
 
         [StringLength(6)]
         public string CityIATACode { get; set; }
+
+        public virtual ICollection<Airports> Airports { get; set; }
     }
 }

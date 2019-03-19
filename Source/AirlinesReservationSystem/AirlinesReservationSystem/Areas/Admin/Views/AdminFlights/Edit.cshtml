@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -18,9 +18,9 @@
         @Html.HiddenFor(model => model.Flightid)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RouterId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RouterId, "RouterId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RouterId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.RouterId, (IEnumerable<SelectListItem>)ViewBag.DataRouter, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RouterId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,9 +50,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PlaneId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PlaneId, "PlaneId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PlaneId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.PlaneId, (IEnumerable<SelectListItem>)ViewBag.DataPlane, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PlaneId, "", new { @class = "text-danger" })
             </div>
         </div>

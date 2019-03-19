@@ -19,7 +19,7 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var discountDetail = _DiscountRepo.SelectAll();
-            return View();
+            return View(discountDetail);
         }
 
         // GET: Admin/AdminDiscountDetails/Details/5

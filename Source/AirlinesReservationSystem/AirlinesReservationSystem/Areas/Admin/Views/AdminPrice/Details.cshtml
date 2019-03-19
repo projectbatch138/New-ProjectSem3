@@ -1,0 +1,43 @@
+﻿@model AirlinesReservationSystem.Price
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Price</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatClassId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatClassId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PriceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,27 @@
+﻿@model AirlinesReservationSystem.ReservationMod
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReservationMod</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationModName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservationModName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReservationModId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

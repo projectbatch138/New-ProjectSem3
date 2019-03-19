@@ -44,7 +44,17 @@ namespace AirlinesReservationSystem
             modelBuilder.Entity<Airports>()
                 .Property(e => e.AirportIATACode)
                 .IsUnicode(false);
+            modelBuilder.Entity<Airports>()
+                .HasMany(e => e.Routers)
+                .WithRequired(e => e.AirportDepart)
+                .HasForeignKey(e => e.Depart)
+                .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Airports>()
+                .HasMany(e => e.Routers1)
+                .WithRequired(e => e.AirportArrival)
+                .HasForeignKey(e => e.Arrival)
+                .WillCascadeOnDelete(false);
             modelBuilder.Entity<Location>()
                 .Property(e => e.Country)
                 .IsUnicode(false);

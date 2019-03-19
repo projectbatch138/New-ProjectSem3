@@ -8,13 +8,19 @@ namespace AirlinesReservationSystem
 
     public partial class SeatNumber
     {
+        [Key]
+        [Required]
         public int SeatNumberId { get; set; }
 
-        [Column("SeatNumber")]
-        public int SeatNumber1 { get; set; }
-
+        [Required]
+        public int SeatNo { get; set; }
+        [Required]
         public int SeatClassId { get; set; }
-
+        [Required]
         public int PlaneId { get; set; }
+
+        public virtual SeatClass SeatClass { get; set; }
+
+        public virtual Plane Plane { get; set; }
     }
 }

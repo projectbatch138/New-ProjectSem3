@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AirlinesReservationSystem.Router>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RouterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Depart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distances)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirportDepart.AirportName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirportArrival.AirportName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distances)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.RouterId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.RouterId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RouterId })
+        </td>
+    </tr>
+}
+
+</table>

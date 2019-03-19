@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AirlinesReservationSystem.Areas.Admin.ReponsitoryModel
 {
@@ -14,16 +15,6 @@ namespace AirlinesReservationSystem.Areas.Admin.ReponsitoryModel
             var planes = this.SelectAll().ToList();
             var search = planes.Where(s => s.PlaneName.ToLower().Contains(name.ToLower())).ToList();
             return search;
-        }
-
-        internal void Insert(Router router)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void Update(Router router)
-        {
-            throw new NotImplementedException();
         }
     }
 }

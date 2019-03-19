@@ -19,7 +19,7 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var BookingTicket = _BookingTicketRepo.SelectAll();
-            return View();
+            return View(BookingTicket);
         }
 
         // GET: Admin/AdminBooking_Ticket/Details/5

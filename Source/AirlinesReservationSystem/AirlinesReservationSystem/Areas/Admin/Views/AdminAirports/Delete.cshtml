@@ -13,6 +13,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Location.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location.Country)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.AirportName)
         </dt>
 
@@ -26,14 +34,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.AirportIATACode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LocationId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LocationId)
         </dd>
 
     </dl>

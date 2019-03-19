@@ -357,16 +357,19 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> Airline</a></li>
-                            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Locations</a></li>
-                            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Planes</a></li>
-                            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Prices</a></li>
-                            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> QuantitySeatClass</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> ReservationMods</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Routers</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> SeatClass</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> SeatDetailByFlight</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> SeatNumber</a></li>
+                            <li>@Html.ActionLink("Airlines", "index", "AdminAirlines")</li>
+                            <li>@Html.ActionLink("Locations", "index", "AdminLocations")</li>
+                            <li>@Html.ActionLink("Planes", "index", "AdminPlanes")</li>
+                            <li>@Html.ActionLink("Prices", "index", "AdminPrice")</li>
+                            <li>@Html.ActionLink("QuantitySeatClass", "index", "AdminQuantitySeatClass")</li>
+                            <li>@Html.ActionLink("ReservationMod", "index", "AdminReservationMod")</li>
+                            <li>@Html.ActionLink("Routers", "index", "AdminRouters")</li>
+                            <li>@Html.ActionLink("SeatClass", "index", "AdminSeatClass")</li>
+                            <li>@Html.ActionLink("SeatNumber", "index", "AdminSeatNumbers")</li>
+                            <li>@Html.ActionLink("Airports", "index", "AdminAirports")</li>
+                            <li>@Html.ActionLink("SeatDetailByFlight", "index", "AdminSeatDetailByFlight")</li>
+                            <li>@Html.ActionLink("DiscountDetails", "index", "AdminDiscountDetails")</li>
+                            <li>@Html.ActionLink("Flights", "index", "AdminFlights")</li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -377,7 +380,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> Booking Ticket</a></li>
+                            <li>@Html.ActionLink("Booking_Ticket", "index", "AdminBooking_Ticket")</li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -491,10 +494,13 @@
                     <li class="active">Dashboard</li>
                 </ol>
             </section>
+            <div class="container body-content">
+
                 @RenderBody()
+               
+            </div>
+
         </div>
-        
-    </div>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0

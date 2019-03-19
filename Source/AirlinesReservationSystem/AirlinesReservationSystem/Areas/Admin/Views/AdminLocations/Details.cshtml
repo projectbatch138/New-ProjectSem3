@@ -1,0 +1,59 @@
+﻿@model AirlinesReservationSystem.Location
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Location</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryIATACode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryIATACode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityIATACode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityIATACode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

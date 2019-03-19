@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AirlinesReservationSystem.Areas.Admin.ReponsitoryModel
 {
-    public class ReponsitoryFlights : GenericReponsitory<ReponsitoryFlights>
+    public class ReponsitoryFlights : GenericReponsitory<Flight>
     {
     }
 }
