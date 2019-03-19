@@ -5,8 +5,8 @@
 }
 
 body {
-	overflow-x: hidden;
-	background-color: #fff;
+    overflow-x: hidden;
+    background-color: #fff;
 }
 
 ul {
@@ -17,6 +17,145 @@ ul {
 p {
 	font-size: 13px;
 	line-height: 24px;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 10000;
+    transition: all 0.2s ease-in-out;
+    height: 80px;
+    background-color: transparent;
+    text-align: center;
+    line-height: 40px;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    text-shadow: none;
+}
+
+.navbar-brand {
+    line-height: 80px;
+    padding: 0px;
+}
+
+.navbar-nav > li > a {
+    color: #fff !important;
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-shadow: none;
+    line-height: 80px;
+    padding: 0px;
+    letter-spacing: 0.5px;
+}
+
+.navbar-nav > li {
+    margin-left: 45px;
+}
+
+.header.active .navbar-nav > li > a {
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: none;
+    color: #121212 !important;
+}
+
+.header.active {
+    background-color: rgba(250, 250, 250, 0.98);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-brand {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #fff !important;
+    transition: all 0.5s;
+}
+
+    .navbar-brand em {
+        font-style: normal;
+        color: #f7c552;
+        font-size: 32px;
+    }
+
+.header.active .navbar-brand {
+    color: #121212 !important;
+}
+
+.header .navbar-brand {
+    font-weight: 800;
+}
+
+.navbar-inverse {
+    background-image: none;
+    background-color: transparent;
+}
+
+.header .navbar {
+    margin: 0;
+    border: none;
+}
+
+.page-section {
+    padding: 80px 0;
+}
+
+.navbar-inverse .navbar-toggle {
+    margin-top: 22px;
+    border-color: #f7c552;
+    background-color: #f7c552;
+}
+
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background-color: #f7c552;
+    }
+
+bootstrap.min.css:5
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 15px !important;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+    .header .navbar-brand {
+        padding-left: 0;
+    }
+
+    .navbar-nav {
+        float: right;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-section h1 {
+        font-size: 3em;
+    }
+
+    .page-section h2 {
+        font-size: 2em;
+    }
+
+    .page-section p {
+        font-size: 1em;
+        margin: 0 0 20px;
+    }
 }
 
 .section-heading h2 {
@@ -445,218 +584,210 @@ p {
 
 
 
-#recommended-hotel {
-	margin-top: 100px;
-	background-color: #f4f4f4;
-	padding: 80px 0px;
+#manage-booking {
+    margin-top: 100px;
+    background-color: #f4f4f4;
+    padding: 80px 0px;
 }
+#manage-booking .tabs {
+        list-style: none;
+        margin-top: 0px;
+        padding-right: 0px;
+}
+#manage-booking .tabs li:first-child {
+            margin-top: 0px;
+}
+#manage-booking .tabs li {
+            display: block;
+            text-align: center;
+            margin: 8px 0px;
+}
+#manage-booking .tabs a {
+            display: block;
+            transition: all 0.5s;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 700;
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            padding-left: 20px;
+            background-color: #1f3646;
+        }
 
-#recommended-hotel .tabs {
-  list-style: none;
-  margin-top: 0px;
-  padding-right: 0px;
-}
+            #manage-booking .tabs a em {
+                font-style: normal;
+                font-weight: 700;
+            }
 
-#recommended-hotel .tabs li:first-child {
-	margin-top: 0px;
-}
+            #manage-booking .tabs a i {
+                float: right;
+                background-color: rgba(250, 250, 250, 0.2);
+                height: 60px;
+                width: 60px;
+                line-height: 60px;
+                text-align: center;
+                font-size: 36px;
+            }
 
-#recommended-hotel .tabs li {
-  display: block;
-  text-align: center;
-  margin: 8px 0px;
-}
+        #manage-booking .tabs .active {
+            background-color: #ffe165;
+            color: #121212;
+        }
 
-#recommended-hotel .tabs a {
-  display:block;
-  transition: all 0.5s;
-  text-align: left;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing: 0.5px;
-  color:#fff;
-  font-size: 17px;
-  font-weight: 700;
-  display: inline-block;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  padding-left: 20px;
-  background-color: #1f3646;
-}
-
-#recommended-hotel .tabs a em {
-	font-style: normal;
-	font-weight: 700;
-}
-
-#recommended-hotel .tabs a i {
-	float: right;
-	background-color: rgba(250, 250, 250, 0.2);
-	height: 60px;
-	width: 60px;
-	line-height: 60px;
-	text-align: center;
-	font-size: 36px;
-}
-
-#recommended-hotel .tabs .active {
-  background-color: #ffe165;
-  color: #121212;
-}
-
-#recommended-hotel .tabs .active i {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+            #manage-booking .tabs .active i {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
 
 .recommendedgroup img {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+#aboutus {
+    width: 100%;
+    text-align: center;
+    height: 400px !important;
+}
+#aboutus iframe {
+        border: none;
 }
 
-#livingroom {
-	width: 100%;
-	text-align: center;
-	height: 400px!important;
+#webcheckin .text-content {
+    background-color: rgba(31, 54, 70, 0.9);
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    left: 15px;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 20px;
 }
 
-#livingroom iframe {
-	border: none;
+#owl-promotion {
+    height: 400px;
 }
 
-#swimingpool .text-content {
-	background-color: rgba(31, 54, 70, 0.9);
-	position: absolute;
-	bottom: 0;
-	right: 15px;
-	left: 15px;
-	height: 80px;
-	overflow: hidden;
-	color: #fff;
-	padding-left: 20px;
+#webcheckin .text-content h4 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
-#owl-suiteroom {
-	height: 400px;
+#webcheckin .text-content span {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
-#swimingpool .text-content h4 {
-	font-size: 19px;
-	font-weight: 700;
-	margin-top: 20px;
-	margin-bottom: 5px;
+#intowncheckin .text-content {
+    background-color: rgba(31, 54, 70, 0.9);
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    left: 15px;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 20px;
 }
 
-#swimingpool .text-content span {
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 0.5px;
+    #intowncheckin .text-content h4 {
+        font-size: 19px;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    #intowncheckin .text-content span {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #fff;
+        letter-spacing: 0.5px;
+    }
+
+#schedule .text-content {
+    background-color: rgba(31, 54, 70, 0.9);
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    left: 15px;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 20px;
+}
+#schedule .text-content h4 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
-#massage .text-content {
-	background-color: rgba(31, 54, 70, 0.9);
-	position: absolute;
-	bottom: 0;
-	right: 15px;
-	left: 15px;
-	height: 80px;
-	overflow: hidden;
-	color: #fff;
-	padding-left: 20px;
-}
-
-#massage .text-content h4 {
-	font-size: 19px;
-	font-weight: 700;
-	margin-top: 20px;
-	margin-bottom: 5px;
-}
-
-#massage .text-content span {
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 0.5px;
-}
-
-#fitness .text-content {
-	background-color: rgba(31, 54, 70, 0.9);
-	position: absolute;
-	bottom: 0;
-	right: 15px;
-	left: 15px;
-	height: 80px;
-	overflow: hidden;
-	color: #fff;
-	padding-left: 20px;
-}
-
-#fitness .text-content h4 {
-	font-size: 19px;
-	font-weight: 700;
-	margin-top: 20px;
-	margin-bottom: 5px;
-}
-
-#fitness .text-content span {
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 0.5px;
+#schedule .text-content span {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
 #event .text-content {
-	background-color: rgba(31, 54, 70, 0.9);
-	position: absolute;
-	bottom: 0;
-	right: 15px;
-	left: 15px;
-	height: 80px;
-	overflow: hidden;
-	color: #fff;
-	padding-left: 20px;
+    background-color: rgba(31, 54, 70, 0.9);
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    left: 15px;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 20px;
 }
 
 #event .text-content h4 {
-	font-size: 19px;
-	font-weight: 700;
-	margin-top: 20px;
-	margin-bottom: 5px;
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 5px;
+
 }
 
 #event .text-content span {
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 0.5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
-.suiteroom-item .text-content {
-	background-color: rgba(31, 54, 70, 0.9);
-	position: absolute;
-	bottom: 0;
-	right: 0px;
-	left: 0px;
-	height: 80px;
-	overflow: hidden;
-	color: #fff;
-	padding-left: 20px;
+.promotion-item .text-content {
+    background-color: rgba(31, 54, 70, 0.9);
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    left: 0px;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 20px;
 }
-
-.suiteroom-item .text-content h4 {
-	font-size: 19px;
-	font-weight: 700;
-	margin-top: 20px;
-	margin-bottom: 5px;
+.promotion-item .text-content h4 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
-
-.suiteroom-item .text-content span {
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 0.5px;
+.promotion-item .text-content span {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #fff;
+        letter-spacing: 0.5px;
 }
 
 
