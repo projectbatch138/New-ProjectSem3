@@ -8,8 +8,14 @@ namespace AirlinesReservationSystem.Controllers
 {
     public class HomeController : Controller
     {
+        //private Areas.Admin.ReponsitoryModel.ReponsitoryFlights reponsitoryFlights = new Areas.Admin.ReponsitoryModel.ReponsitoryFlights();
+        private Areas.Admin.ReponsitoryModel.ReponsitoryLocations reponsitoryLocation = new Areas.Admin.ReponsitoryModel.ReponsitoryLocations();
+
+       
         public ActionResult Index()
         {
+            TempData["DataDepart"] = new SelectList(reponsitoryLocation.SelectAll(), "LocationId", "City");
+            TempData["DataArrival"] = new SelectList(reponsitoryLocation.SelectAll(), "LocationId", "City");
             return View();
         }
 

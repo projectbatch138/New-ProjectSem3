@@ -1,0 +1,117 @@
+﻿@model IEnumerable<AirlinesReservationSystem.Flight>
+
+@{
+    ViewBag.Title = "SearchFlight";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<h3>Flight Depart</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Plane.PlaneName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Router.RouterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dept_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arr_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plane.PlaneName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Router.RouterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dept_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arr_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.Flightid }) |
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+@{
+    if (ViewBag.FlightArrival != null)
+    {
+        List<Flight> flightArrival = new List<Flight>();
+        flightArrival = ViewBag.FlightArrival;
+        <h3>Flight Arrival</h3>
+
+        <table class="table">
+            @foreach (var item in flightArrival)
+            {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plane.PlaneName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Router.RouterName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dept_Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Arr_Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plane.PlaneName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Router.RouterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dept_Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Arr_Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.Flightid }) |
+
+                </td>
+            </tr>
+            }
+        </table>
+    }
+
+}
+
+

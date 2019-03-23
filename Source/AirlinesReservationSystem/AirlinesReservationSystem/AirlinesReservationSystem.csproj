@@ -215,6 +215,7 @@
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatClass.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatDetailByFlight.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatNumber.cs" />
+    <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Airline.cs" />
     <Compile Include="Models\Airports.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Models\SeatNumber.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryAirlines.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FlightViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\AdminLTE.min.css" />
@@ -269,10 +271,13 @@
     <Content Include="Areas\Admin\Image\User\user6-128x128.jpg" />
     <Content Include="Areas\Admin\Image\User\user7-128x128.jpg" />
     <Content Include="Areas\Admin\Image\User\user8-128x128.jpg" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mytemplate\css\bootstrap-datepicker.min.css" />
     <Content Include="Content\mytemplate\css\bootstrap-theme.css" />
     <Content Include="Content\mytemplate\css\bootstrap-theme.min.css" />
     <Content Include="Content\mytemplate\css\bootstrap.css" />
@@ -318,6 +323,8 @@
     <Content Include="Content\mytemplate\img\weather-icon-01.png" />
     <Content Include="Content\mytemplate\img\weather-icon-02.png" />
     <Content Include="Content\mytemplate\img\weather-icon-03.png" />
+    <Content Include="Content\mytemplate\js\bootstrap-datepicker.js" />
+    <Content Include="Content\mytemplate\js\bootstrap-datepicker.min.js" />
     <Content Include="Content\mytemplate\js\datepicker.js" />
     <Content Include="Content\mytemplate\js\main.js" />
     <Content Include="Content\mytemplate\js\plugins.js" />
@@ -332,6 +339,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\adminlte.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -435,6 +444,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\morris.min.js" />
     <Content Include="Scripts\raphael.min.js" />
@@ -477,6 +489,8 @@
     <Content Include="Areas\Admin\Views\AdminAirlines\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAirlines\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAirlines\Index.cshtml" />
+    <Content Include="Views\Flights\_SearchFlight.cshtml" />
+    <Content Include="Views\Flights\SearchFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

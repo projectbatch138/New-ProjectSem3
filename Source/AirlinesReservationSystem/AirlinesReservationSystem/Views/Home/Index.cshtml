@@ -26,84 +26,10 @@
                 </div>
             </div>
             <div class="col-md-5 col-md-offset-1">
-                <section id="first-tab-group" class="tabgroup">
-                    <div id="tab1">
-                        <div class="submit-form">
-                            <h4>Check availability for <em>direction</em>:</h4>
-                            <form id="form-submit" action="" method="get">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <fieldset>
-                                            <label for="from">From:</label>
-                                            <select required name='from' onchange='this.form.()'>
-                                                <option value="">Select a location...</option>
-                                                <option value="Cambodia">Cambodia</option>
-                                                <option value="Hong Kong">Hong Kong</option>
-                                                <option value="India">India</option>
-                                                <option value="Japan">Japan</option>
-                                                <option value="Korea">Korea</option>
-                                                <option value="Laos">Laos</option>
-                                                <option value="Myanmar">Myanmar</option>
-                                                <option value="Singapore">Singapore</option>
-                                                <option value="Thailand">Thailand</option>
-                                                <option value="Vietnam">Vietnam</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <fieldset>
-                                            <label for="to">To:</label>
-                                            <select required name='to' onchange='this.form.()'>
-                                                <option value="">Select a location...</option>
-                                                <option value="Cambodia">Cambodia</option>
-                                                <option value="Hong Kong">Hong Kong</option>
-                                                <option value="India">India</option>
-                                                <option value="Japan">Japan</option>
-                                                <option value="Korea">Korea</option>
-                                                <option value="Laos">Laos</option>
-                                                <option value="Myanmar">Myanmar</option>
-                                                <option value="Singapore">Singapore</option>
-                                                <option value="Thailand">Thailand</option>
-                                                <option value="Vietnam">Vietnam</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <fieldset>
-                                            <label for="departure">Departure date:</label>
-                                            <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="Select date..." required="" onchange='this.form.()'>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <fieldset>
-                                            <label for="return">Return date:</label>
-                                            <input name="return" type="text" class="form-control date" id="return" placeholder="Select date..." required="" onchange='this.form.()'>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="radio-select">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                                    <label for="round">Round</label>
-                                                    <input type="radio" name="trip" id="round" value="round" required="required" onchange='this.form.()'>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                                    <label for="oneway">Oneway</label>
-                                                    <input type="radio" name="trip" id="oneway" value="one-way" required="required" onchange='this.form.()'>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <fieldset>
-                                            <button type="submit" id="form-submit" class="btn">Order Ticket Now</button>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
+                @{
+                    
+                    Html.RenderPartial("~/Views/Flights/_SearchFlight.cshtml");
+                }
             </div>
         </div>
     </div>
@@ -395,7 +321,6 @@
                     <div class="service-icon"></div>
                     <h4>Safety and Service</h4>
                     <p>Pleasure to serve and safety priority .</p>
-                    </a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -403,7 +328,6 @@
                     <div class="service-icon"></div>
                     <h4>Unique Ideas</h4>
                     <p>Creative, Discover new ideas.</p>
-                    </a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -411,16 +335,124 @@
                     <div class="service-icon"></div>
                     <h4>Best Support</h4>
                     <p>Alway listen to customers 24/7. </p>
-                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<div class="tabs-content" id="recommended-hotel">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Recommended Hotel For You</h2>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="col-md-4">
+                    <ul class="tabs clearfix" data-tabgroup="third-tab-group">
+                        <li><a href="#livingroom" class="active">Living Room <i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#suitroom">Suit Room <i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#swimingpool">Swiming Pool <i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#massage">Massage Service <i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#fitness">Fitness Life <i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#event">Evening Event <i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <section id="third-tab-group" class="recommendedgroup">
+                    <div id="livingroom">
+                        <div class="text-content">
+                            <iframe width="100%" height="400px" src="https://www.youtube.com/embed/rMxTreSFMgE"></iframe>
+                        </div>
+                    </div>
+                    <div id="suitroom">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="owl-suiteroom" class="owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="suiteroom-item">
+                                            <img src="@Url.Content("~/Content/mytemplate/")img/suite-02.jpg" alt="">
+                                            <div class="text-content">
+                                                <h4>Clean And Relaxing Room</h4>
+                                                <span>Aurora Resort</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="suiteroom-item">
+                                            <img src="@Url.Content("~/Content/mytemplate/")img/suite-01.jpg" alt="">
+                                            <div class="text-content">
+                                                <h4>Special Suite Room TV</h4>
+                                                <span>Khao Yai Hotel</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="suiteroom-item">
+                                            <img src="@Url.Content("~/Content/mytemplate/")img/suite-03.jpg" alt="">
+                                            <div class="text-content">
+                                                <h4>The Best Sitting</h4>
+                                                <span>Hotel Grand</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="swimingpool">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/swiming-pool.jpg" alt="">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-content">
+                                    <h4>Lovely View Swiming Pool For Special Guests</h4>
+                                    <span>Victoria Resort and Spa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="massage">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/massage-service.jpg" alt="">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-content">
+                                    <h4>Perfect Place For Relaxation</h4>
+                                    <span>Napali Beach</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fitness">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/fitness-service.jpg" alt="">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-content">
+                                    <h4>Insane Street Workout</h4>
+                                    <span>Hua Hin Beach</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="event">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/evening-event.jpg" alt="">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-content">
+                                    <h4>Finest Winery Night</h4>
+                                    <span>Queen Restaurant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-        
 <section id="most-visited">
     <div class="container">
         <div class="row">
