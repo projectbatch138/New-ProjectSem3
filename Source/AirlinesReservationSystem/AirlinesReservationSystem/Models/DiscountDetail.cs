@@ -9,16 +9,20 @@ namespace AirlinesReservationSystem
     [Table("DiscountDetail")]
     public partial class DiscountDetail
     {
-        public int DiscountDetailId { get; set; }
+        [Key][Required]
+        public int DiscountId { get; set; }
 
         public int FlightId { get; set; }
 
-        public int TypeDiscountId { get; set; }
+        public int Discount { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? CreatedDate { get; set; }
 
+        public int Status { get; set; }
+
         [Column(TypeName = "date")]
-        public DateTime? modifyDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
+        public virtual Flight Flight { get; set; }
     }
 }

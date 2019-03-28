@@ -16,6 +16,8 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         private ReponsitoryFlights _FlightRepo = new ReponsitoryFlights();
         private ReponsitoryRouter _RouterRepo = new ReponsitoryRouter();
         private ReponsitoryPlane _PlaneRepo = new ReponsitoryPlane();
+        private ReponsitorySeatNumber _SeatNumber = new ReponsitorySeatNumber();
+        private ReponsitorySeatDetailByFlight _SeatDetailByFlight = new ReponsitorySeatDetailByFlight();
 
         // GET: Admin/AdminFlights
         public ActionResult Index()
@@ -54,16 +56,32 @@ namespace AirlinesReservationSystem.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Flightid,RouterId,Dept_Time,Arr_Time,Status,PlaneId")] Flight flight)
         {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.DataRouter = new SelectList(_RouterRepo.SelectAll(), "RouterId", "RouterName");
-                ViewBag.DataPlane = new SelectList(_PlaneRepo.SelectAll(), "PlaneId", "PlaneName");
-                return View(flight);
-            }
+            
+            
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.DataRouter = new SelectList(_RouterRepo.SelectAll(), "RouterId", "RouterName");
+                    ViewBag.DataPlane = new SelectList(_PlaneRepo.SelectAll(), "PlaneId", "PlaneName");
+                    return View(flight);
+                }
             try
             {
                 _FlightRepo.Insert(flight);
                 _FlightRepo.Save();
+                var seatnumber = _SeatNumber.SelectAll().Where(x => x.PlaneId == flight.PlaneId);
+                foreach (SeatNumber s in seatnumber)
+                {
+                    SeatDetailByFlight seat = new SeatDetailByFlight
+                    {
+                        FlightId = flight.Flightid,
+                        SeatStatus = true
+                    };
+                    seat.SeatNumberId = s.SeatNumberId;
+                    _SeatDetailByFlight.Insert(seat);
+                }
+               
+                _SeatDetailByFlight.Save();
+               
             }
             catch (Exception)
             {

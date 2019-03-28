@@ -12,6 +12,7 @@ namespace AirlinesReservationSystem
         {
             QuantitySeatClass = new HashSet<QuantitySeatClass>();
             SeatNumbers = new HashSet<SeatNumber>();
+            this.Prices = new HashSet<Price>();
         }
         [Key]
         public int SeatClassId { get; set; }
@@ -22,5 +23,6 @@ namespace AirlinesReservationSystem
 
         public virtual ICollection<QuantitySeatClass> QuantitySeatClass { get; set; }
         public virtual ICollection<SeatNumber> SeatNumbers { get; set; }
+        public virtual ICollection<Price> Prices { get; set; }
     }
 }

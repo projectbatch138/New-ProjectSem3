@@ -16,5 +16,9 @@ namespace AirlinesReservationSystem
         public int SeatNumberId { get; set; }
 
         public bool SeatStatus { get; set; }
+
+        public virtual Flight Flight { get; set; }
+
+        public virtual SeatNumber SeatNumber { get; set; }
     }
 }

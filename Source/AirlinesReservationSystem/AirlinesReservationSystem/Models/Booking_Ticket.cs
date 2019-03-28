@@ -19,14 +19,23 @@ namespace AirlinesReservationSystem
 
         public int? DiscountId { get; set; }
 
-        public int? DiscountBySeatClassId { get; set; }
+        public string PassengerFirstName { get; set; }
 
-        public int? DiscountBySkymiles { get; set; }
+        public string PassengerLastName { get; set; }
 
-        public int? DiscountByEarly { get; set; }
+        public string PassengerNumberId { get; set; }
 
+        [Display(Name = "Choose Seat Number")]
+        [Required]
         public int? SeatDetailByFlightId { get; set; }
 
+        public string PassengerEmail { get; set; }
+
+        public string PassengerPhoneNumber { get; set; }
+
         public int ReservationModId { get; set; }
+
+        public virtual Flight Flight { get; set; }
+        public virtual ReservationMod ReservationMod { get; set; }
     }
 }

@@ -11,13 +11,12 @@ namespace AirlinesReservationSystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
-            /*
-            this.Booking_Ticket = new HashSet<Booking_Ticket>();
-            this.Booking_Ticket1 = new HashSet<Booking_Ticket>();
-            this.DiscountDetails = new HashSet<DiscountDetail>();
+            
             this.Prices = new HashSet<Price>();
+            
+            this.DiscountDetails = new HashSet<DiscountDetail>();
+            this.Booking_Ticket = new HashSet<Booking_Ticket>();
             this.SeatDetailByFlights = new HashSet<SeatDetailByFlight>();
-            */
         }
         public int Flightid { get; set; }
 
@@ -30,18 +29,16 @@ namespace AirlinesReservationSystem
         public int? Status { get; set; }
 
         public int PlaneId { get; set; }
-        /*
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Booking_Ticket> Booking_Ticket { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Booking_Ticket> Booking_Ticket1 { get; set; }
+        public virtual ICollection<Price> Prices { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiscountDetail> DiscountDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Price> Prices { get; set; }
+        public virtual ICollection<Booking_Ticket> Booking_Ticket { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SeatDetailByFlight> SeatDetailByFlights { get; set; }
-        */
         public virtual Plane Plane { get; set; }
         public virtual Router Router { get; set; }
         

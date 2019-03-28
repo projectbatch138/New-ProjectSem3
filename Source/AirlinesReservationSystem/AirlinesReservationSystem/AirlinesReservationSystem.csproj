@@ -215,6 +215,7 @@
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatClass.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatDetailByFlight.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitorySeatNumber.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Airline.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Models\SeatNumber.cs" />
     <Compile Include="Areas\Admin\ReponsitoryModel\ReponsitoryAirlines.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BookingViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -491,11 +493,13 @@
     <Content Include="Areas\Admin\Views\AdminAirlines\Index.cshtml" />
     <Content Include="Views\Flights\_SearchFlight.cshtml" />
     <Content Include="Views\Flights\SearchFlight.cshtml" />
+    <Content Include="Views\Booking\Booking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Routers\" />
+    <Folder Include="Views\SeatClass_CountTicket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

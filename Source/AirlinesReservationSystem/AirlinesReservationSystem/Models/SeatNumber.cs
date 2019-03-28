@@ -8,6 +8,16 @@ namespace AirlinesReservationSystem
 
     public partial class SeatNumber
     {
+        public SeatNumber()
+        {
+            /*
+            this.Booking_Ticket = new HashSet<Booking_Ticket>();
+            this.Booking_Ticket1 = new HashSet<Booking_Ticket>();
+            this.DiscountDetails = new HashSet<DiscountDetail>();
+            this.Prices = new HashSet<Price>();
+            */
+            this.SeatDetailByFlights = new HashSet<SeatDetailByFlight>();
+        }
         [Key]
         [Required]
         public int SeatNumberId { get; set; }
@@ -22,5 +32,8 @@ namespace AirlinesReservationSystem
         public virtual SeatClass SeatClass { get; set; }
 
         public virtual Plane Plane { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SeatDetailByFlight> SeatDetailByFlights { get; set; }
     }
 }
