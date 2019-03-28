@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace AirlinesReservationSystem.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminPriceController : Controller
     {
         private ReponsitoryPrices _PricesRepo = new ReponsitoryPrices();

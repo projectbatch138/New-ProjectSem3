@@ -11,6 +11,7 @@ using AirlinesReservationSystem.ReponsitoryModel;
 
 namespace AirlinesReservationSystem.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminAirlinesController : Controller
     {
         private ReponsitoryAirlines _AirlinesRepo = new ReponsitoryAirlines();
