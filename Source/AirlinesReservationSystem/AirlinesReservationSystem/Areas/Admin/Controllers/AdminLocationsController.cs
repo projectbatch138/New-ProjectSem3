@@ -11,6 +11,7 @@ using AirlinesReservationSystem.ReponsitoryModel;
 
 namespace AirlinesReservationSystem.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminLocationsController : Controller
     {
         private ReponsitoryModel.ReponsitoryLocations _LocationRepo = new ReponsitoryModel.ReponsitoryLocations();

@@ -11,6 +11,7 @@ using AirlinesReservationSystem.Areas.Admin.ReponsitoryModel;
 
 namespace AirlinesReservationSystem.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminQuantitySeatClassController : Controller
     {
         private ReponsitoryQuantitySeatClass _QuantitySeatRepo = new ReponsitoryQuantitySeatClass();

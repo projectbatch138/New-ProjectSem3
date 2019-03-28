@@ -18,16 +18,16 @@ namespace AirlinesReservationSystem.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class _ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public _ApplicationDbContext()
+            : base("AirlinesDBContext", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static _ApplicationDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new _ApplicationDbContext();
         }
     }
 }

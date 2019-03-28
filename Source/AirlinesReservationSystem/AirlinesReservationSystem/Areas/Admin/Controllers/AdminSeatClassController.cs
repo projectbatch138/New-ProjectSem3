@@ -11,6 +11,7 @@ using AirlinesReservationSystem.ReponsitoryModel;
 
 namespace AirlinesReservationSystem.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminSeatClassController : Controller
     {
         // GET: SeatClass

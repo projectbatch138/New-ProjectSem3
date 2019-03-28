@@ -12,6 +12,7 @@ using AirlinesReservationSystem.ReponsitoryModel;
 
 namespace AirlinesReservationSystem.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminRoutersController : Controller
     {
         // GET: Routers
