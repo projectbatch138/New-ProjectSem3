@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AirlinesReservationSystem.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace AirlinesReservationSystem.Controllers
 {
@@ -36,6 +40,8 @@ namespace AirlinesReservationSystem.Controllers
             TempData["DataSeat"] = new SelectList(seatbyflight, "SeatDetailByFlightId", "SeatNumber.SeatNo");
             return View();
         }
+
+
         [HttpPost]
         public ActionResult Booking(int id, int seatclassid,int DiscountId, int PriceId, [Bind(Include = "Booking_TicketId,PassengerFirstName,PassengerLastName,PassengerNumberId,SeatDetailByFlightId,PassengerEmail,PassengerPhoneNumber")] Booking_Ticket booking)
         {
@@ -43,7 +49,8 @@ namespace AirlinesReservationSystem.Controllers
             booking.DiscountId = DiscountId;
             booking.PriceId = PriceId;
             booking.ReservationModId = 1;
-            booking.UserId = 1;
+            booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
+            booking.UserId = HttpContext.User.Identity.GetUserId();
             _booking.Insert(booking);
             SeatDetailByFlight seat = new SeatDetailByFlight();
             seat= _SeatNumber.SelectById(booking.SeatDetailByFlightId);
@@ -51,7 +58,33 @@ namespace AirlinesReservationSystem.Controllers
             _SeatNumber.Update(seat);
             _SeatNumber.Save();
             _booking.Save();
-           return RedirectToAction("index","Home");
+            TempData["Code"] = booking.CodeTicket;
+            TempData["Email"] = booking.PassengerEmail.ToString();
+                return RedirectToAction("Contact");
+           
         }
+
+
+        public async Task<ActionResult> Contact()
+        {
+            if (ModelState.IsValid)
+            {
+                var codebooking = TempData["Code"];
+                string EmailPas = TempData["Email"].ToString();
+                var body = "<p>Email From: {0} ({1})</p><p>Thank you for booking ticket from our airline . :</p><p>{2}</p>";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress(EmailPas));
+                message.Subject = "Booking Airline";
+                message.Body = string.Format(body, "ASPAirline: ", "aspairline@gmail.com", " Your code: " + codebooking);
+                message.IsBodyHtml = true;
+                using (var smtp = new SmtpClient())
+                {
+                    await smtp.SendMailAsync(message);
+                }
+            }
+            return RedirectToAction("Payment","Manage");
+        }
+
+       
     }
 }

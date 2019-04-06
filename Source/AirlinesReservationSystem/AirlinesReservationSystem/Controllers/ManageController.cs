@@ -7,12 +7,20 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AirlinesReservationSystem.Models;
+using AirlinesReservationSystem.ViewModels;
+using System.Collections.Generic;
 
 namespace AirlinesReservationSystem.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private Areas.Admin.ReponsitoryModel.ReponsitoryBookingTicket _booking = new Areas.Admin.ReponsitoryModel.ReponsitoryBookingTicket();
+        private Areas.Admin.ReponsitoryModel.ReponsitoryDiscountDetail _discount = new Areas.Admin.ReponsitoryModel.ReponsitoryDiscountDetail();
+        private Areas.Admin.ReponsitoryModel.ReponsitoryPrices _price = new 
+            Areas.Admin.ReponsitoryModel.ReponsitoryPrices();
+        private Areas.Admin.ReponsitoryModel.ReponsitorySeatDetailByFlight _seatby = new 
+            Areas.Admin.ReponsitoryModel.ReponsitorySeatDetailByFlight();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -322,6 +330,115 @@ namespace AirlinesReservationSystem.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        public ActionResult Payment()
+        {
+            string userid = HttpContext.User.Identity.GetUserId();
+            var bookingPay = _booking.SelectAll().Where(x => x.UserId == userid)
+                .Where(x => x.ReservationModId == 1).ToList();
+           
+            
+            var Listpayment = new List<PaymentViewModel>();
+            foreach (var item in bookingPay)
+            {
+                var discount = _discount.SelectById(item.DiscountId);
+                var price = _price.SelectById(item.PriceId);
+                var seat = _seatby.SelectById(item.SeatDetailByFlightId);
+                PaymentViewModel ticket = new PaymentViewModel
+                {
+                    FlightID = item.FlightId,
+                    Location_Depart = item.Flight.Router.AirportDepart.Location.City,
+                    Location_Arrival = item.Flight.Router.AirportArrival.Location.City,
+                    Dept_Time = item.Flight.Dept_Time,
+                    Arr_Time = item.Flight.Arr_Time,
+                    Price = price.Price1,
+                    Discount = discount.Discount,
+                    SeatDetailByFlightId = item.SeatDetailByFlightId,
+                    SeatNumber = seat.SeatNumber.SeatNo,
+                    Booking_TicketId = item.Booking_TicketId,
+                    PassengerFirstName = item.PassengerFirstName,
+                    PassengerLastName = item.PassengerLastName,
+                    PassengerEmail = item.PassengerEmail,
+                    PassengerNumberId = item.PassengerNumberId,
+                    PassengerPhoneNumber = item.PassengerPhoneNumber
+                };
+                if (ticket.Discount == null)
+                {
+                    ticket.Total = ticket.Price;
+                }
+                else
+                {
+                    ticket.Total = ticket.Price - (ticket.Price * (int)ticket.Discount / 100);
+                }
+                
+                Listpayment.Add(ticket);
+
+            }
+            TempData["listpayment"] = Listpayment.ToList();
+            return View(Listpayment);
+        }
+
+        public ActionResult Cancel(int BookingId, int seatId)
+        {
+            Booking_Ticket booking = new Booking_Ticket();
+            booking = _booking.SelectById(BookingId);
+            booking.ReservationModId = 3;
+            _booking.Update(booking);
+            _booking.Save();
+            SeatDetailByFlight seat = new SeatDetailByFlight();
+            seat = _seatby.SelectById(seatId);
+            seat.SeatStatus = true;
+            _seatby.Update(seat);
+            _seatby.Save();
+            return RedirectToAction("Payment");
+        }
+
+
+        public ActionResult HistoryBooking()
+        {
+            string userid = HttpContext.User.Identity.GetUserId();
+            var bookingPay = _booking.SelectAll().Where(x => x.UserId == userid)
+                .Where(x => x.ReservationModId != 1).ToList();
+
+
+            var Listpayment = new List<PaymentViewModel>();
+            foreach (var item in bookingPay)
+            {
+                var discount = _discount.SelectById(item.DiscountId);
+                var price = _price.SelectById(item.PriceId);
+                var seat = _seatby.SelectById(item.SeatDetailByFlightId);
+                PaymentViewModel ticket = new PaymentViewModel
+                {
+                    FlightID = item.FlightId,
+                    Location_Depart = item.Flight.Router.AirportDepart.Location.City,
+                    Location_Arrival = item.Flight.Router.AirportArrival.Location.City,
+                    Dept_Time = item.Flight.Dept_Time,
+                    Arr_Time = item.Flight.Arr_Time,
+                    Price = price.Price1,
+                    Discount = discount.Discount,
+                    SeatDetailByFlightId = item.SeatDetailByFlightId,
+                    SeatNumber = seat.SeatNumber.SeatNo,
+                    Booking_TicketId = item.Booking_TicketId,
+                    PassengerFirstName = item.PassengerFirstName,
+                    PassengerLastName = item.PassengerLastName,
+                    PassengerEmail = item.PassengerEmail,
+                    PassengerNumberId = item.PassengerNumberId,
+                    PassengerPhoneNumber = item.PassengerPhoneNumber
+                };
+                if (ticket.Discount == null)
+                {
+                    ticket.Total = ticket.Price;
+                }
+                else
+                {
+                    ticket.Total = ticket.Price - (ticket.Price * (int)ticket.Discount / 100);
+                }
+
+                Listpayment.Add(ticket);
+
+            }
+
+            return View(Listpayment);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

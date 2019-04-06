@@ -94,5 +94,7 @@ namespace AirlinesReservationSystem
         }
 
         public System.Data.Entity.DbSet<AirlinesReservationSystem.ViewModels.FlightViewModel> FlightViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<AirlinesReservationSystem.ViewModels.PaymentViewModel> PaymentViewModels { get; set; }
     }
 }

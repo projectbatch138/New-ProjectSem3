@@ -11,7 +11,7 @@ namespace AirlinesReservationSystem
     {
         [Key][Required]
         public int DiscountId { get; set; }
-
+        [Required]
         public int FlightId { get; set; }
 
         public int Discount { get; set; }

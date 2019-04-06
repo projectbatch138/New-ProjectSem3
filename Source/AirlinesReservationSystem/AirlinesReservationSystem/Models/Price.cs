@@ -15,7 +15,7 @@ namespace AirlinesReservationSystem
         public int SeatClassId { get; set; }
 
         [Column("Price")]
-        public int? Price1 { get; set; }
+        public int Price1 { get; set; }
 
         public virtual Flight Flight { get; set; }
         public virtual SeatClass SeatClass { get; set; }

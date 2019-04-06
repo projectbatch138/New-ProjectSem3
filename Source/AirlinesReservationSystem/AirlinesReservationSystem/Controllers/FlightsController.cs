@@ -30,12 +30,16 @@ namespace AirlinesReservationSystem.Controllers
         }
 
         // Post: Flights ([Bind(Include = "Flightid,RouterId,Dept_Time,Arr_Time,Status,PlaneId")] Flight flight)
-        public ActionResult SearchFlight([Bind(Include = "FlightID,Location_Depart,Location_Arrival,Time_Depart,Time_Arrival,Trip")] FlightViewModel flightVm)
+        [HttpPost]
+        public ActionResult Index([Bind(Include = "FlightID,Location_Depart,Location_Arrival,Time_Depart,Time_Arrival,Trip")] FlightViewModel flightVm)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return Redirect("Home/index");
+                TempData["DataDepart"] = new SelectList(reponsitoryLocation.SelectAll(), "LocationId", "City");
+                TempData["DataArrival"] = new SelectList(reponsitoryLocation.SelectAll(), "LocationId", "City");
+                return View("~/Views/Home/Index.cshtml");
             }
+
             var flight = reponsitoryFlights.SelectAll();
             var flightdepart = flight
                 .Where(x => x.Dept_Time.CompareTo(flightVm.Time_Depart) > 0)
@@ -49,6 +53,7 @@ namespace AirlinesReservationSystem.Controllers
             var seatbyflight = reponsitorySeatDetailByFlight.SelectAll();
             ViewBag.SeatClassByFlight = new List<SeatDetailByFlight>();
             ViewBag.SeatClassByFlight = seatbyflight;
+
 
             var Price = _price.SelectAll();
             ViewBag.Price = new List<Price>();
