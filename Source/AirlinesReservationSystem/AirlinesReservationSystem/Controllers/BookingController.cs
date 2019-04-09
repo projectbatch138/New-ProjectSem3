@@ -43,23 +43,29 @@ namespace AirlinesReservationSystem.Controllers
 
 
         [HttpPost]
-        public ActionResult Booking(int id, int seatclassid,int DiscountId, int PriceId, [Bind(Include = "Booking_TicketId,PassengerFirstName,PassengerLastName,PassengerNumberId,SeatDetailByFlightId,PassengerEmail,PassengerPhoneNumber")] Booking_Ticket booking)
+        public ActionResult Booking(int id, int seatclassid,int DiscountId, int PriceId, [Bind(Include = "Booking_TicketId,PassengerFirstName,PassengerLastName,PassengerNumberId,SeatDetailByFlightId,PassengerEmail,PassengerPhoneNumber")] Booking_Ticket[] bookings)
         {
-            booking.FlightId = id;
-            booking.DiscountId = DiscountId;
-            booking.PriceId = PriceId;
-            booking.ReservationModId = 1;
-            booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
-            booking.UserId = HttpContext.User.Identity.GetUserId();
-            _booking.Insert(booking);
-            SeatDetailByFlight seat = new SeatDetailByFlight();
-            seat= _SeatNumber.SelectById(booking.SeatDetailByFlightId);
-            seat.SeatStatus = false;
-            _SeatNumber.Update(seat);
-            _SeatNumber.Save();
-            _booking.Save();
-            TempData["Code"] = booking.CodeTicket;
-            TempData["Email"] = booking.PassengerEmail.ToString();
+            int i = 0;
+            foreach (var booking in bookings)
+            {
+                booking.FlightId = id;
+                booking.DiscountId = DiscountId;
+                booking.PriceId = PriceId;
+                booking.ReservationModId = 1;
+                booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
+                booking.UserId = HttpContext.User.Identity.GetUserId();
+                //_booking.Insert(booking);
+                SeatDetailByFlight seat = new SeatDetailByFlight();
+                seat = _SeatNumber.SelectById(booking.SeatDetailByFlightId);
+                seat.SeatStatus = false;
+                //_SeatNumber.Update(seat);
+                //_SeatNumber.Save();
+                //_booking.Save();
+                TempData["Code" + i] = booking.CodeTicket;
+                TempData["Email" + i] = booking.PassengerEmail.ToString();
+                i++;
+            }
+            TempData["Sum"] = i;
                 return RedirectToAction("Contact");
            
         }
@@ -69,18 +75,23 @@ namespace AirlinesReservationSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var codebooking = TempData["Code"];
-                string EmailPas = TempData["Email"].ToString();
-                var body = "<p>Email From: {0} ({1})</p><p>Thank you for booking ticket from our airline . :</p><p>{2}</p>";
-                var message = new MailMessage();
-                message.To.Add(new MailAddress(EmailPas));
-                message.Subject = "Booking Airline";
-                message.Body = string.Format(body, "ASPAirline: ", "aspairline@gmail.com", " Your code: " + codebooking);
-                message.IsBodyHtml = true;
-                using (var smtp = new SmtpClient())
+
+                for (int i = 0; i < (int)TempData["Sum"]; i++)
                 {
-                    await smtp.SendMailAsync(message);
+                    var codebooking = TempData["Code" + i];
+                    string EmailPas = TempData["Email" + i].ToString();
+                    var body = "<p>Email From: {0} ({1})</p><p>Thank you for booking ticket from our airline . :</p><p>{2}</p>";
+                    var message = new MailMessage();
+                    message.To.Add(new MailAddress(EmailPas));
+                    message.Subject = "Booking Airline";
+                    message.Body = string.Format(body, "ASPAirline: ", "aspairline@gmail.com", " Your code: " + codebooking);
+                    message.IsBodyHtml = true;
+                    using (var smtp = new SmtpClient())
+                    {
+                        await smtp.SendMailAsync(message);
+                    }
                 }
+                
             }
             return RedirectToAction("Payment","Manage");
         }
