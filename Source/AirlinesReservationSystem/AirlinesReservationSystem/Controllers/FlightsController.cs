@@ -75,5 +75,26 @@ namespace AirlinesReservationSystem.Controllers
             return View(flightdepart);
 
         }
+
+        public ActionResult ArrivalFlight()
+        {
+            var seatclass = _Seatclass.SelectAll();
+            ViewBag.SeatClass = new List<SeatClass>();
+            ViewBag.SeatClass = seatclass;
+
+            var seatbyflight = reponsitorySeatDetailByFlight.SelectAll();
+            ViewBag.SeatClassByFlight = new List<SeatDetailByFlight>();
+            ViewBag.SeatClassByFlight = seatbyflight;
+
+            var Price = _price.SelectAll();
+            ViewBag.Price = new List<Price>();
+            ViewBag.Price = Price;
+
+            var Discount = _Discount.SelectAll();
+            ViewBag.Discount = new List<DiscountDetail>();
+            ViewBag.Discount = Discount;
+
+            return View();
+        }
     }
 }

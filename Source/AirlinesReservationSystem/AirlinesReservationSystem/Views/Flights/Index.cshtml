@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AirlinesReservationSystem.Flight>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Depart Flight";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -81,9 +81,28 @@
                 {
                     foreach (var a in discount)
                     {
-                        decimal PriceTotal = (decimal)(x.Price1 - (x.Price1 * a.Discount/100));
+                        decimal PriceTotal = (decimal)(x.Price1 - (x.Price1 * a.Discount / 100));
                         <p style="color:mediumvioletred">Price: @PriceTotal.ToString()</p>
-                        @Html.ActionLink(@seatbyflight.Count + " Seat left", "Booking", "Booking", new { id = item.Flightid, seatclassid = i.SeatClassId, DiscountId = a.DiscountId, PriceId = x.PriceId }, null)
+                        AirlinesReservationSystem.ViewModels.BookingViewModel Departflight = new AirlinesReservationSystem.ViewModels.BookingViewModel();
+
+                        Departflight.Flightid = item.Flightid;
+                        Departflight.DiscountId = a.DiscountId;
+                        Departflight.PriceId = x.PriceId;
+                        Departflight.SeatClassId = i.SeatClassId;
+
+                        TempData["Depart"] = Departflight;
+                        if (ViewBag.FlightArrival == null)
+                        {
+                            @Html.ActionLink(seatbyflight.Count + " Seat left", "Booking", "Booking")
+                        }
+                        else
+                        {
+                            List<Flight> flightArrival = new List<Flight>();
+                            flightArrival = ViewBag.FlightArrival;
+                            TempData["FlightArrival"] = flightArrival;
+                            @Html.ActionLink(seatbyflight.Count + " Seat left", "ArrivalFlight", "Flights")
+                        }
+
                     }
 
                 }
@@ -99,68 +118,5 @@
 
 </table>
 
-
-
-
-@{
-    if (ViewBag.FlightArrival != null)
-    {
-        List<Flight> flightArrival = new List<Flight>();
-        flightArrival = ViewBag.FlightArrival;
-        <h3>Flight Arrival</h3>
-
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Plane.PlaneName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Router.RouterName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Dept_Time)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Arr_Time)
-                </th>
-                @{
-
-                    foreach (var i in seatClasses)
-                    {
-                        <th>
-                            @Html.DisplayName(i.SeatClassName)
-                        </th>
-                    }
-                }
-                <th></th>
-            </tr>
-            @foreach (var item in flightArrival)
-            {
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plane.PlaneName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Router.RouterName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Dept_Time)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Arr_Time)
-                    </td>
-
-                    <td>
-
-                        @Html.ActionLink("Booking", "Booking Ticket", new { id = item.Flightid })
-
-                    </td>
-                </tr>
-            }
-        </table>
-    }
-
-}
 
 

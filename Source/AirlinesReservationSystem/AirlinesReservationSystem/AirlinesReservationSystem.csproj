@@ -2180,6 +2180,7 @@
     <Content Include="Views\Manage\HistoryBooking.cshtml" />
     <Content Include="Views\PaymentbyPayPal\Failure.cshtml" />
     <Content Include="Views\PaymentbyPayPal\Succsess.cshtml" />
+    <Content Include="Views\Flights\ArrivalFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

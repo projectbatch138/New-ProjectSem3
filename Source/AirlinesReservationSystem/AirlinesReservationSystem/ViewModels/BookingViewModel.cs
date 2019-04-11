@@ -27,6 +27,8 @@ namespace AirlinesReservationSystem.ViewModels
 
         public int? DiscountId { get; set; }
 
+        public int SeatClassId { get; set; }
+
         public string PassengerFirstName { get; set; }
 
         public string PassengerLastName { get; set; }
