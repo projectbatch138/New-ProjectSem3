@@ -3,13 +3,9 @@
     <section id="first-tab-group" class="tabgroup">
         <div id="tab1">
             <div class="submit-form">
-                <h4>Check availability for direction</h4>
-                <hr />
-
-                @using (Html.BeginForm("SearchFlight", "Flights", FormMethod.Post, new { @class = "ui large form" }))
+                @using (Html.BeginForm("Index", "Flights", FormMethod.Post, new { @class = "ui large form" }))
                 {
-                    @Html.AntiForgeryToken()
-                    
+                   // @Html.AntiForgeryToken()
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -47,7 +43,7 @@
                         @Html.LabelFor(model => model.Trip, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             One Way
-                            @Html.RadioButtonFor(model => model.Trip, "OneWay")
+                            @Html.RadioButtonFor(model => model.Trip, "OneWay", new { @checked = true })
                             Round
                             @Html.RadioButtonFor(model => model.Trip, "Round")
                         </div>
@@ -55,7 +51,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Search" class="btn btn-default" />
+                            <input style="background-color:gold" type="submit" value="Search" class="btn btn-default" />
                         </div>
                     </div>
                 </div>

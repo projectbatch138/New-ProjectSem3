@@ -21,11 +21,13 @@ namespace AirlinesReservationSystem.ViewModels
 
         public int Booking_TicketId { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public int PriceId { get; set; }
 
         public int? DiscountId { get; set; }
+
+        public int SeatClassId { get; set; }
 
         public string PassengerFirstName { get; set; }
 

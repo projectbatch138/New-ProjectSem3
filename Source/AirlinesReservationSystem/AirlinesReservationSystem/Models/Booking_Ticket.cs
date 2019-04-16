@@ -11,7 +11,7 @@ namespace AirlinesReservationSystem
 
        public int Booking_TicketId { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public int FlightId { get; set; }
 
@@ -34,6 +34,8 @@ namespace AirlinesReservationSystem
         public string PassengerPhoneNumber { get; set; }
 
         public int ReservationModId { get; set; }
+
+        public string CodeTicket { get; set; }
 
         public virtual Flight Flight { get; set; }
         public virtual ReservationMod ReservationMod { get; set; }

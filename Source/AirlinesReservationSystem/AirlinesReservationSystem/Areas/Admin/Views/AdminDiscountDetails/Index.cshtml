@@ -16,13 +16,13 @@
             @Html.DisplayNameFor(model => model.FlightId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TypeDiscountId)
+            @Html.DisplayNameFor(model => model.DiscountId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreatedDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.modifyDate)
+            @Html.DisplayNameFor(model => model.ModifyDate)
         </th>
         <th></th>
     </tr>
@@ -33,18 +33,18 @@
             @Html.DisplayFor(modelItem => item.FlightId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TypeDiscountId)
+            @Html.DisplayFor(modelItem => item.DiscountId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.modifyDate)
+            @Html.DisplayFor(modelItem => item.ModifyDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountDetailId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DiscountDetailId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DiscountDetailId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DiscountId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DiscountId })
         </td>
     </tr>
 }

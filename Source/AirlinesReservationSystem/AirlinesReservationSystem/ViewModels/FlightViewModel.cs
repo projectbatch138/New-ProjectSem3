@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.ComponentModel;
+using AirlinesReservationSystem.ValidationAtributesCustom;
 
 namespace AirlinesReservationSystem.ViewModels
 {
@@ -15,12 +16,14 @@ namespace AirlinesReservationSystem.ViewModels
         [Required]
         public int Location_Depart { get; set; }
         [Required]
-        [Compare("Location_Depart" , ErrorMessage = "The Depart and Arrival do not match.")]
+       // [Compare("Location_Depart" , ErrorMessage = "The Depart and Arrival do not match.")]
         public int Location_Arrival { get; set; }
         [Required]
         public DateTime Time_Depart { get; set; }
-        public DateTime Time_Arrival { get; set; }
-        [Required]
+
+        [RequiredIf("Trip", "Round", "Requied If you choosed Round")]
+        public DateTime? Time_Arrival { get; set; }
+       
         public string Trip { get; set; }
     }
 }

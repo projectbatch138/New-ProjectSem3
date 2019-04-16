@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AirlinesReservationSystem.ViewModels.PaymentViewModel>
+
+@{
+    ViewBag.Title = "HistoryBooking";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>History Booking</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Location_Depart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location_Arrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dept_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arr_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassengerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassengerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location_Depart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location_Arrival)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dept_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arr_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassengerFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassengerLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNumber)
+            </td>
+
+        </tr>
+    }
+
+</table>
