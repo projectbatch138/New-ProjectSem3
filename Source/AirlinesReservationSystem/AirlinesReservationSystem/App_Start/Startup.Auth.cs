@@ -54,15 +54,15 @@ namespace AirlinesReservationSystem
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "305130346830665",
+               appSecret: "3ba5cdd4833fa3af038b09081438b772");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1066635603289-7cnspkgl3evuumk70ru5r4nca36hd6q2.apps.googleusercontent.com",
+                ClientSecret = "MHfeMPxS_Etq1pjexwO2ARL-"
+            });
         }
     }
 }
