@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<AirlinesReservationSystem.Flight>
 
 @{
-    ViewBag.Title = "Arrival Flight";
+    ViewBag.Title = "Depart Flight";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 
@@ -10,105 +11,112 @@
 
 
 </pre>
-<h3>Flight Arrival</h3>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Plane.PlaneName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Router.RouterName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dept_Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Arr_Time)
-        </th>
-        @{
-            List<SeatClass> seatClasses = new List<SeatClass>();
-            seatClasses = ViewBag.SeatClass;
-            foreach (var i in seatClasses)
-            {
-                <th>
-                    @Html.DisplayName(i.SeatClassName)
-                </th>
-            }
-        }
-        <th></th>
-    </tr>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <h3 style="color:white">Flight Depart</h3>
+                <table>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">Plane</th>
+                            <th class="column2">Router</th>
+                            <th class="column3">Departing</th>
+                            <th class="column4">Returning</th>
+                            @{
+                                List<SeatClass> seatClasses = new List<SeatClass>();
+                                seatClasses = ViewBag.SeatClass;
+                                int clNumber = 5;
+                                string clName = "column";
+                                foreach (var i in seatClasses)
+                                {
 
-    @foreach (var item in (List<Flight>)TempData["FlightArrival"])
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Plane.PlaneName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Router.RouterName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dept_Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Arr_Time)
-            </td>
-            @{
-                List<Price> Price = new List<Price>();
-                Price = ViewBag.Price;
-                List<DiscountDetail> Discount = new List<DiscountDetail>();
-                Discount = ViewBag.Discount;
-                foreach (var i in seatClasses)
-                {
-
-
-                    List<SeatDetailByFlight> seatbyflight = new List<SeatDetailByFlight>();
-                    seatbyflight = ViewBag.SeatClassByFlight;
-                    seatbyflight = seatbyflight.Where(x => x.FlightId == item.Flightid)
-                        .Where(x => x.SeatStatus == true)
-                        .Where(x => x.SeatNumber.SeatClass.SeatClassId == i.SeatClassId)
-                        .ToList<SeatDetailByFlight>();
-                    List<Price> price = new List<Price>();
-                    price = Price.Where(x => x.FlightId == item.Flightid)
-                        .Where(x => x.SeatClassId == i.SeatClassId).ToList<Price>();
-
-                    List<DiscountDetail> discount = new List<DiscountDetail>();
-                    discount = Discount.Where(x => x.FlightId == item.Flightid)
-                        .ToList<DiscountDetail>();
-            <td>
-                @{
-                    foreach (var x in price)
-                    {
-                        foreach (var a in discount)
+                                    <th class=@String.Concat(clName,clNumber.ToString())>
+                                        @Html.DisplayName(i.SeatClassName)
+                                    </th>
+                                    clNumber++;
+                                }
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (List<Flight>)TempData["FlightArrival"])
                         {
-                            decimal PriceTotal = (decimal)(x.Price1 - (x.Price1 * a.Discount / 100));
-                            <p style="color:mediumvioletred">Price: @PriceTotal.ToString()</p>
-                            AirlinesReservationSystem.ViewModels.BookingViewModel Arrivalflight = new AirlinesReservationSystem.ViewModels.BookingViewModel();
+                            <tr>
+                                <td class="column1">@Html.DisplayFor(modelItem => item.Plane.PlaneName)</td>
+                                <td class="column2">@Html.DisplayFor(modelItem => item.Router.RouterName)</td>
+                                <td class="column3">@Html.DisplayFor(modelItem => item.Dept_Time)</td>
+                                <td class="column4"> @Html.DisplayFor(modelItem => item.Arr_Time)</td>
+                                @{
+                                    List<Price> Price = new List<Price>();
+                                    Price = ViewBag.Price;
+                                    List<DiscountDetail> Discount = new List<DiscountDetail>();
+                                    Discount = ViewBag.Discount;
+                                    int clNumber1 = 5;
+                                    string clName1 = "column";
+                                    foreach (var i in seatClasses)
+                                    {
+                                        List<AirlinesReservationSystem.ViewModels.InventoryTickets> quantityseat = new List<AirlinesReservationSystem.ViewModels.InventoryTickets>();
+                                        quantityseat = (List<AirlinesReservationSystem.ViewModels.InventoryTickets>)TempData["InventoriesArr"];
+                                        AirlinesReservationSystem.ViewModels.InventoryTickets inventoryTickets = new AirlinesReservationSystem.ViewModels.InventoryTickets();
+                                        inventoryTickets = quantityseat.Where(x => x.FlightId == item.Flightid).Where(x => x.SeatClassId == i.SeatClassId).FirstOrDefault();
 
-                            Arrivalflight.Flightid = item.Flightid;
-                            Arrivalflight.DiscountId = a.DiscountId;
-                            Arrivalflight.PriceId = x.PriceId;
-                            Arrivalflight.SeatClassId = i.SeatClassId;
+                                        List<SeatDetailByFlight> seatbyflight = new List<SeatDetailByFlight>();
+                                        seatbyflight = ViewBag.SeatClassByFlight;
+                                        seatbyflight = seatbyflight.Where(x => x.FlightId == item.Flightid)
+                                            .Where(x => x.SeatStatus == true)
+                                            .Where(x => x.SeatNumber.SeatClass.SeatClassId == i.SeatClassId)
+                                            .ToList<SeatDetailByFlight>();
+                                        List<Price> price = new List<Price>();
+                                        price = Price.Where(x => x.FlightId == item.Flightid)
+                                            .Where(x => x.SeatClassId == i.SeatClassId).ToList<Price>();
 
-                            TempData["Arrivalflight"] = Arrivalflight;
+                                        List<DiscountDetail> discount = new List<DiscountDetail>();
+                                        discount = Discount.Where(x => x.FlightId == item.Flightid)
+                                            .ToList<DiscountDetail>();
 
-                                @Html.ActionLink(@seatbyflight.Count + " Seat left", "Booking", "Booking")
+                                        <td class=@String.Concat(clName1, clNumber1.ToString())>
+                                            @{
+                                                clNumber1++;
+                                            }
+                                            @{
+                                                foreach (var x in price)
+                                                {
+                                                    foreach (var a in discount)
+                                                    {
+                                                        decimal PriceTotal = (decimal)(x.Price1 - (x.Price1 * a.Discount / 100));
+                                                        <p style="color:mediumvioletred">Price: @PriceTotal.ToString()</p>
+                                                        AirlinesReservationSystem.ViewModels.BookingViewModel Arrivalflight = new AirlinesReservationSystem.ViewModels.BookingViewModel();
+
+                                                        Arrivalflight.Flightid = item.Flightid;
+                                                        Arrivalflight.DiscountId = a.DiscountId;
+                                                        Arrivalflight.PriceId = x.PriceId;
+                                                        Arrivalflight.SeatClassId = i.SeatClassId;
+
+                                                        TempData["Arrivalflight"] = Arrivalflight;
+
+                                                        @Html.ActionLink(inventoryTickets.Inventory + " Seat left", "Booking", "Booking")
 
 
+
+                                                    }
+
+                                                }
+                                            }
+                                        </td>
+
+                                    }
+
+                                }
+                            </tr>
                         }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    }
-                }
-
-
-            </td>
-                }
-            }
-
-        </tr>
-    }
-
-</table>
 
 
 

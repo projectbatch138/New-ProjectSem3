@@ -1,161 +1,141 @@
 ﻿
 @{
+
     ViewBag.Title = "ASP Airline Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <!-- Header -->
-<header class="masthead">
+<div>
+    @Html.Partial("~/Views/Flights/_SearchFlight.cshtml")
+</div>
+  
+
+
+<!-- Portfolio Grid -->
+<section class="bg-light" id="portfolio" style="padding:0px">
     <div class="container">
-        <div class="intro-text">
-            <div class="intro-lead-in">Welcome To Our Airline!</div>
-            <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#contact">Search Flight</a>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Travel</h2>
+                <h3 class="section-subheading text-muted">Beautiful Location</h3>
+            </div>
         </div>
-    </div>
-</header>
-<div class="container-fluid" style="padding:0px">
-    <div class="row">
-        <div class="col-md-12">
-            <section id="contact" style="padding:40px">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12" style="color: yellow">
-                            <h3 class="section-heading text-uppercase" style="text-align:center">Search Your Flight</h3>
-                            @Html.Partial("~/Views/Flights/_SearchFlight.cshtml")
+        <div class="row">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
+                    <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/01-thumbnail.jpg" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Threads</h4>
+                    <p class="text-muted">Illustration</p>
                 </div>
-            </section>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/02-thumbnail.jpg" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Explore</h4>
+                    <p class="text-muted">Graphic Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/03-thumbnail.jpg" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Finish</h4>
+                    <p class="text-muted">Identity</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/04-thumbnail.jpg" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Lines</h4>
+                    <p class="text-muted">Branding</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/05-thumbnail.jpg" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Southwest</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/06-thumbnail.jpg" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Window</h4>
+                    <p class="text-muted">Photography</p>
+                </div>
+            </div>
         </div>
-
     </div>
-</div>
-
-                                        <!-- Portfolio Grid -->
-                                        <section class="bg-light" id="portfolio" style="padding:0px">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center">
-                                                        <h2 class="section-heading text-uppercase">Travel</h2>
-                                                        <h3 class="section-subheading text-muted">Beautiful Location</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-6 portfolio-item">
-                                                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                                                            <div class="portfolio-hover">
-                                                                <div class="portfolio-hover-content">
-                                                                    <i class="fas fa-plus fa-3x"></i>
-                                                                </div>
-                                                            </div>
-                                                            <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/01-thumbnail.jpg" alt="">
-                                                        </a>
-                                                        <div class="portfolio-caption">
-                                                            <h4>Threads</h4>
-                                                            <p class="text-muted">Illustration</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-6 portfolio-item">
-                                                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                                                            <div class="portfolio-hover">
-                                                                <div class="portfolio-hover-content">
-                                                                    <i class="fas fa-plus fa-3x"></i>
-                                                                </div>
-                                                            </div>
-                                                            <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/02-thumbnail.jpg" alt="">
-                                                        </a>
-                                                        <div class="portfolio-caption">
-                                                            <h4>Explore</h4>
-                                                            <p class="text-muted">Graphic Design</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-6 portfolio-item">
-                                                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                                                            <div class="portfolio-hover">
-                                                                <div class="portfolio-hover-content">
-                                                                    <i class="fas fa-plus fa-3x"></i>
-                                                                </div>
-                                                            </div>
-                                                            <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/03-thumbnail.jpg" alt="">
-                                                        </a>
-                                                        <div class="portfolio-caption">
-                                                            <h4>Finish</h4>
-                                                            <p class="text-muted">Identity</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-6 portfolio-item">
-                                                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                                                            <div class="portfolio-hover">
-                                                                <div class="portfolio-hover-content">
-                                                                    <i class="fas fa-plus fa-3x"></i>
-                                                                </div>
-                                                            </div>
-                                                            <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/04-thumbnail.jpg" alt="">
-                                                        </a>
-                                                        <div class="portfolio-caption">
-                                                            <h4>Lines</h4>
-                                                            <p class="text-muted">Branding</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-6 portfolio-item">
-                                                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-                                                            <div class="portfolio-hover">
-                                                                <div class="portfolio-hover-content">
-                                                                    <i class="fas fa-plus fa-3x"></i>
-                                                                </div>
-                                                            </div>
-                                                            <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/05-thumbnail.jpg" alt="">
-                                                        </a>
-                                                        <div class="portfolio-caption">
-                                                            <h4>Southwest</h4>
-                                                            <p class="text-muted">Website Design</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-6 portfolio-item">
-                                                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-                                                            <div class="portfolio-hover">
-                                                                <div class="portfolio-hover-content">
-                                                                    <i class="fas fa-plus fa-3x"></i>
-                                                                </div>
-                                                            </div>
-                                                            <img class="img-fluid" src="~/Content/mytemplate/img/portfolio/06-thumbnail.jpg" alt="">
-                                                        </a>
-                                                        <div class="portfolio-caption">
-                                                            <h4>Window</h4>
-                                                            <p class="text-muted">Photography</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
+</section>
 
 
-                                        <!-- Clients -->
-                                        <section class="py-5">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="#">
-                                                            <img class="img-fluid d-block mx-auto" src="img/logos/envato.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="#">
-                                                            <img class="img-fluid d-block mx-auto" src="img/logos/designmodo.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="#">
-                                                            <img class="img-fluid d-block mx-auto" src="img/logos/themeforest.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="#">
-                                                            <img class="img-fluid d-block mx-auto" src="img/logos/creative-market.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
+<!-- Clients -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/envato.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/designmodo.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/themeforest.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/creative-market.jpg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

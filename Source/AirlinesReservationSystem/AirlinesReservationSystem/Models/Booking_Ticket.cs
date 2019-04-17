@@ -15,6 +15,8 @@ namespace AirlinesReservationSystem
 
         public int FlightId { get; set; }
 
+        public int SeatClassId { get; set; }
+
         public int PriceId { get; set; }
 
         public int? DiscountId { get; set; }

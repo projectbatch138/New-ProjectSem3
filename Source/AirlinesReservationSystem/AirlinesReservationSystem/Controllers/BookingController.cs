@@ -26,7 +26,7 @@ namespace AirlinesReservationSystem.Controllers
             {
                 TempData["Arrivalflight"] = TempData["Arrivalflight"];
             }
-
+            TempData["Adults"] = TempData["Adults"];
             return View();
         }
 

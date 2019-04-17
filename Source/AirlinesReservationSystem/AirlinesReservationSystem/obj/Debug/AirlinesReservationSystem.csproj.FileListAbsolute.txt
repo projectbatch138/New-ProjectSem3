@@ -328,4 +328,3 @@ C:\Users\Trung\Desktop\New Project Team\New-ProjectSem3\Source\AirlinesReservati
 C:\Users\Trung\Desktop\New Project Team\New-ProjectSem3\Source\AirlinesReservationSystem\AirlinesReservationSystem\obj\Debug\AirlinesReservationSystem.csproj.CopyComplete
 C:\Users\Trung\Desktop\New Project Team\New-ProjectSem3\Source\AirlinesReservationSystem\AirlinesReservationSystem\obj\Debug\AirlinesReservationSystem.dll
 C:\Users\Trung\Desktop\New Project Team\New-ProjectSem3\Source\AirlinesReservationSystem\AirlinesReservationSystem\obj\Debug\AirlinesReservationSystem.pdb
-C:\Users\Trung\Desktop\New Project Team\New-ProjectSem3\Source\AirlinesReservationSystem\AirlinesReservationSystem\obj\Debug\AirlinesReservationSystem.csprojAssemblyReference.cache

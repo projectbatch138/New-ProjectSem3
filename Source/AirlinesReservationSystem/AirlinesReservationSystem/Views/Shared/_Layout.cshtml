@@ -4,7 +4,8 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -14,9 +15,17 @@
     <title>@ViewBag.Title</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="~/Content/mytemplate/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="~/Content/mytemplate/img/flight.png" />
 
+    <link href="~/Content/mytemplate/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/Content/mytemplate/vendor/bootstrap/css/style.css" />
     <!-- Custom fonts for this template -->
+    <link rel="stylesheet" type="text/css" href="~/Content/mytemplate/fonts/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/mytemplate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/mytemplate/vendor/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/mytemplate/vendor/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/mytemplate/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/mytemplate/main.css">
     <link href="~/Content/mytemplate/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -60,7 +69,10 @@
             </div>
         </div>
     </nav>
-    @RenderBody()
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
 
 
     <!-- Footer -->
@@ -121,6 +133,12 @@
     <!-- Bootstrap core JavaScript -->
 
     <script src="~/Content/mytemplate/vendor/jquery/jquery.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/popper.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/main.js"></script>
 
     <script src="~/Content/mytemplate/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

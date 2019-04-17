@@ -23,7 +23,9 @@ namespace AirlinesReservationSystem.ViewModels
 
         [RequiredIf("Trip", "Round", "Requied If you choosed Round")]
         public DateTime? Time_Arrival { get; set; }
-       
+        [Required]
         public string Trip { get; set; }
+        [Range(1,3)][Required]
+        public int Adults { get; set; }
     }
 }

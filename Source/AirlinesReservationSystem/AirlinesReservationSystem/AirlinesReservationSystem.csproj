@@ -266,6 +266,7 @@
     <Compile Include="ValidationAtributesCustom\RequiredIf.cs" />
     <Compile Include="ViewModels\BookingViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\InventoryTickets.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +296,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\agency.min.css" />
     <Content Include="Content\all.min.css" />
+    <Content Include="Content\daterangepicker.css" />
+    <Content Include="Content\mytemplate\animate.css" />
     <Content Include="Content\mytemplate\css\agency.css" />
     <Content Include="Content\mytemplate\css\agency.min.css" />
     <Content Include="Content\mytemplate\css\bootstrap-datepicker.min.css" />
@@ -309,12 +312,14 @@
     <Content Include="Content\mytemplate\css\main.css" />
     <Content Include="Content\MyCSS.css" />
     <Content Include="Content\mytemplate\css\owl-carousel.css" />
+    <Content Include="Content\mytemplate\fonts\font-awesome.min.css" />
     <Content Include="Content\mytemplate\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\mytemplate\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\mytemplate\img\about\1.jpg" />
     <Content Include="Content\mytemplate\img\about\2.jpg" />
     <Content Include="Content\mytemplate\img\about\3.jpg" />
     <Content Include="Content\mytemplate\img\about\4.jpg" />
+    <Content Include="Content\mytemplate\img\background.jpg" />
     <Content Include="Content\mytemplate\img\banner-bg.jpg" />
     <Content Include="Content\mytemplate\img\close.png" />
     <Content Include="Content\mytemplate\img\contact-01.jpg" />
@@ -322,6 +327,7 @@
     <Content Include="Content\mytemplate\img\contact-bg.jpg" />
     <Content Include="Content\mytemplate\img\evening-event.jpg" />
     <Content Include="Content\mytemplate\img\fitness-service.jpg" />
+    <Content Include="Content\mytemplate\img\flight.png" />
     <Content Include="Content\mytemplate\img\header-bg.jpg" />
     <Content Include="Content\mytemplate\img\heading-bg.jpg" />
     <Content Include="Content\mytemplate\img\loading.gif" />
@@ -372,8 +378,6 @@
     <Content Include="Content\mytemplate\img\weather-icon-03.png" />
     <Content Include="Content\mytemplate\js\agency.js" />
     <Content Include="Content\mytemplate\js\agency.min.js" />
-    <Content Include="Content\mytemplate\js\bootstrap-datepicker.js" />
-    <Content Include="Content\mytemplate\js\bootstrap-datepicker.min.js" />
     <Content Include="Content\mytemplate\js\contact_me.js" />
     <Content Include="Content\mytemplate\js\datepicker.js" />
     <Content Include="Content\mytemplate\js\jqBootstrapValidation.js" />
@@ -384,12 +388,15 @@
     <Content Include="Content\mytemplate\js\vendor\jquery-1.11.2.min.js" />
     <Content Include="Content\mytemplate\js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
     <Content Include="Content\mytemplate\js\vendor\npm.js" />
+    <Content Include="Content\mytemplate\main.css" />
+    <Content Include="Content\mytemplate\util.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\css\bootstrap-reboot.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\css\bootstrap-reboot.min.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\mytemplate\vendor\bootstrap\css\style.css" />
     <Content Include="Content\mytemplate\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\mytemplate\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\mytemplate\vendor\bootstrap\js\bootstrap.js" />
@@ -1950,6 +1957,8 @@
     <Content Include="Content\mytemplate\vendor\jquery\jquery.min.js" />
     <Content Include="Content\mytemplate\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\mytemplate\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\mytemplate\vendor\perfect-scrollbar.css" />
+    <Content Include="Content\mytemplate\vendor\select2.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2123,13 +2132,16 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\morris.min.js" />
+    <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\raphael.min.js" />
+    <Content Include="Scripts\select2.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
