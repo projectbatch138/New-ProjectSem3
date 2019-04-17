@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AirlinesReservationSystem.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         //private Areas.Admin.ReponsitoryModel.ReponsitoryFlights reponsitoryFlights = new Areas.Admin.ReponsitoryModel.ReponsitoryFlights();

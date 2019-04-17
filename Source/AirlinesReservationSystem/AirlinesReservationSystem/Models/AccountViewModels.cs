@@ -6,8 +6,17 @@ namespace AirlinesReservationSystem.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -50,7 +59,6 @@ namespace AirlinesReservationSystem.Models
     {
         [Required]
         [Display(Name = "UserName")]
-        //[EmailAddress]
         public string UserName { get; set; }
 
         [Required]
@@ -70,9 +78,14 @@ namespace AirlinesReservationSystem.Models
         public string Email { get; set; }
 
         [Required]
-        
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+
+        [Required(ErrorMessage = "You must provide a phone number")]
+        [Display(Name = "PhoneNumber")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

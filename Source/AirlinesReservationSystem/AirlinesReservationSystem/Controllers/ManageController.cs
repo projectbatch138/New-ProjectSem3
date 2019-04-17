@@ -124,18 +124,31 @@ namespace AirlinesReservationSystem.Controllers
             {
                 return View(model);
             }
-            // Generate the token and send it
-            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
-            if (UserManager.SmsService != null)
-            {
-                var message = new IdentityMessage
+                var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber);
+                if (result.Succeeded)
                 {
-                    Destination = model.Number,
-                    Body = "Your security code is: " + code
-                };
-                await UserManager.SmsService.SendAsync(message);
-            }
-            return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
+                    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    if (user != null)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    }
+                    return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
+                }
+            
+            ModelState.AddModelError("", "Failed to add phone number");
+            return View(model);
+            // Generate the token and send it
+            //if (UserManager.SmsService != null)
+            //{
+            //    var message = new IdentityMessage
+            //    {
+            //        Destination = model.Number,
+            //        Body = "Your security code is: " + code
+            //    };
+            //    await UserManager.SmsService.SendAsync(message);
+            //}
+
+
         }
 
         //

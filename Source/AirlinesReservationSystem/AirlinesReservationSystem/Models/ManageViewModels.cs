@@ -62,8 +62,10 @@ namespace AirlinesReservationSystem.Models
     {
         [Required]
         [Phone]
-        [Display(Name = "Phone Number")]
-        public string Number { get; set; }
+        [Display(Name = "PhoneNumber")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public string PhoneNumber { get; set; }
     }
 
     public class VerifyPhoneNumberViewModel
