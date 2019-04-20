@@ -48,6 +48,7 @@ namespace AirlinesReservationSystem.Controllers
                 booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
                 booking.UserId = HttpContext.User.Identity.GetUserId();
                 _booking.Insert(booking);
+                _booking.Save();
                 TempData["CodeDepart" + i] = booking.CodeTicket;
                 if (TempData["Arrivalflight"] != null)
                 {
@@ -57,14 +58,16 @@ namespace AirlinesReservationSystem.Controllers
                     booking.FlightId = Arrivalflight.Flightid;
                     booking.DiscountId = Arrivalflight.DiscountId;
                     booking.PriceId = Arrivalflight.PriceId;
+                    booking.ReservationModId = 1;
                     booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
                     _booking.Insert(booking);
                     TempData["CodeArrival" + i] = booking.CodeTicket;
+                    _booking.Save();
                 }
 
                 //_SeatNumber.Update(seat);
                 //_SeatNumber.Save();
-                //_booking.Save();
+                
 
                 TempData["Email" + i] = booking.PassengerEmail.ToString();
                 i++;
@@ -79,7 +82,7 @@ namespace AirlinesReservationSystem.Controllers
 
         public async Task<ActionResult> Contact()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
 
                 for (int i = 0; i < (int)TempData["Sum"]; i++)

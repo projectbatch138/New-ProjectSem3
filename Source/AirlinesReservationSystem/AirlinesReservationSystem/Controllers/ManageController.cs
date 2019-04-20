@@ -355,7 +355,7 @@ namespace AirlinesReservationSystem.Controllers
             {
                 var discount = _discount.SelectById(item.DiscountId);
                 var price = _price.SelectById(item.PriceId);
-                var seat = _seatby.SelectById(item.SeatDetailByFlightId);
+                //var seat = _seatby.SelectById(item.SeatDetailByFlightId);
                 PaymentViewModel ticket = new PaymentViewModel
                 {
                     FlightID = item.FlightId,
@@ -366,7 +366,7 @@ namespace AirlinesReservationSystem.Controllers
                     Price = price.Price1,
                     Discount = discount.Discount,
                     SeatDetailByFlightId = item.SeatDetailByFlightId,
-                    SeatNumber = seat.SeatNumber.SeatNo,
+                    //SeatNumber = seat.SeatNumber.SeatNo,
                     Booking_TicketId = item.Booking_TicketId,
                     PassengerFirstName = item.PassengerFirstName,
                     PassengerLastName = item.PassengerLastName,
@@ -390,18 +390,18 @@ namespace AirlinesReservationSystem.Controllers
             return View(Listpayment);
         }
 
-        public ActionResult Cancel(int BookingId, int seatId)
+        public ActionResult Cancel(int BookingId)
         {
             Booking_Ticket booking = new Booking_Ticket();
             booking = _booking.SelectById(BookingId);
             booking.ReservationModId = 3;
             _booking.Update(booking);
             _booking.Save();
-            SeatDetailByFlight seat = new SeatDetailByFlight();
-            seat = _seatby.SelectById(seatId);
-            seat.SeatStatus = true;
-            _seatby.Update(seat);
-            _seatby.Save();
+           // SeatDetailByFlight seat = new SeatDetailByFlight();
+            //seat = _seatby.SelectById(seatId);
+           // seat.SeatStatus = true;
+            //_seatby.Update(seat);
+            //_seatby.Save();
             return RedirectToAction("Payment");
         }
 
@@ -418,7 +418,7 @@ namespace AirlinesReservationSystem.Controllers
             {
                 var discount = _discount.SelectById(item.DiscountId);
                 var price = _price.SelectById(item.PriceId);
-                var seat = _seatby.SelectById(item.SeatDetailByFlightId);
+                //var seat = _seatby.SelectById(item.SeatDetailByFlightId);
                 PaymentViewModel ticket = new PaymentViewModel
                 {
                     FlightID = item.FlightId,
@@ -429,7 +429,7 @@ namespace AirlinesReservationSystem.Controllers
                     Price = price.Price1,
                     Discount = discount.Discount,
                     SeatDetailByFlightId = item.SeatDetailByFlightId,
-                    SeatNumber = seat.SeatNumber.SeatNo,
+                    //SeatNumber = seat.SeatNumber.SeatNo,
                     Booking_TicketId = item.Booking_TicketId,
                     PassengerFirstName = item.PassengerFirstName,
                     PassengerLastName = item.PassengerLastName,

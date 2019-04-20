@@ -2,155 +2,50 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
+    <!-- Title Page-->
+    <title>Flight</title>
+    <link rel="icon" type="image/png" href="~/Content/MDB-Free_4.7.7/img/flight.png" />
+    <!-- Icons font CSS-->
+    <link href="~/Content/NewLayout/colorlib-regform-4/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/NewLayout/colorlib-regform-4/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+    <!-- Vendor CSS-->
+    <link href="~/Content/NewLayout/colorlib-regform-4/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/NewLayout/colorlib-regform-4/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
-    <title>@ViewBag.Title</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="~/Content/mytemplate/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="~/Content/mytemplate/vendor/bootstrap/css/style.css" />
-    <!-- Custom fonts for this template -->
-    <link href="~/Content/mytemplate/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this template -->
-    <link href="~/Content/mytemplate/css/agency.css" rel="stylesheet">
-    @Styles.Render("~/Content/Mycss")
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- Main CSS-->
+    <link href="~/Content/NewLayout/colorlib-regform-4/css/main.css" rel="stylesheet" media="all">
 </head>
 
-<body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:black">
-        <div class="container">
-            @Html.ActionLink("ASP Airline", "Index", "Home", null, new { @class = "navbar-brand js-scroll-trigger" })
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Flights</a>
-                    </li>
-                    <li class="nav-item">@Html.Partial("_LoginPartial")</li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                
-                
-            </div>
-            <div class="col-md-9">
-                @RenderBody()
-            </div>
-        </div>
+<body id="page-top" style="background-color:lightgray">
+
+
+    <div class="col-md-12">
+        @RenderBody()
     </div>
-        
 
 
 
-    <!-- Footer -->
-    <footer class="page-footer font-small cyan darken-3">
-
-        <!-- Footer Elements -->
-        <div class="container">
-
-            <!-- Grid row-->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-12 py-5">
-                    <div class="mb-5 flex-center">
-
-                        <!-- Facebook -->
-                        <a class="fb-ic">
-                            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <!-- Twitter -->
-                        <a class="tw-ic">
-                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <!-- Google +-->
-                        <a class="gplus-ic">
-                            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <!--Linkedin -->
-                        <a class="li-ic">
-                            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <!--Instagram-->
-                        <a class="ins-ic">
-                            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <!--Pinterest-->
-                        <a class="pin-ic">
-                            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row-->
-
-        </div>
-        <!-- Footer Elements -->
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">
-            © 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-    <!-- Bootstrap core JavaScript -->
-
-    <script src="~/Content/mytemplate/vendor/jquery/jquery.min.js"></script>
-
-    <script src="~/Content/mytemplate/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-
-    <script src="~/Content/mytemplate/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
-    <!-- Custom scripts for this template -->
+    <script src="~/Content/NewLayout/colorlib-regform-4/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="~/Content/NewLayout/colorlib-regform-4/vendor/select2/select2.min.js"></script>
+    <script src="~/Content/NewLayout/colorlib-regform-4/vendor/datepicker/moment.min.js"></script>
+    <script src="~/Content/NewLayout/colorlib-regform-4/vendor/datepicker/daterangepicker.js"></script>
 
-    <script src="~/Content/mytemplate/js/agency.min.js"></script>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/Js")
+    <!-- Main JS-->
+    <script src="~/Content/NewLayout/colorlib-regform-4/js/global.js"></script>
     @RenderSection("scripts", required: false)
 
 </body>

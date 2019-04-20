@@ -80,16 +80,9 @@ namespace AirlinesReservationSystem.Controllers
                 transactions = transactionList,
                 redirect_urls = redirUrls
             };
-            /*
-            try
-            {
-                return payment.Create(apiContext);
-            }
-            catch (PayPal.PayPalException ex)
-            {
-                Response.Write("Error Paypal Exception: " + ex.Message);
-            }
-            */
+            
+
+            
             return payment.Create(apiContext);
         }
 

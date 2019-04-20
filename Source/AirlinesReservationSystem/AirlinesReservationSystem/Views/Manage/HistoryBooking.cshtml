@@ -9,63 +9,62 @@
 
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Location_Depart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location_Arrival)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dept_Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Arr_Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PassengerFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PassengerLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeatNumber)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr class="table100-head">
+            <th class="column1">
+                @Html.DisplayNameFor(model => model.Location_Depart)
+            </th>
+            <th class="column2">
+                @Html.DisplayNameFor(model => model.Location_Arrival)
+            </th>
+            <th class="column3">
+                @Html.DisplayNameFor(model => model.Dept_Time)
+            </th>
+            <th class="column4">
+                @Html.DisplayNameFor(model => model.Arr_Time)
+            </th>
+            <th class="column5">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="column6">
+                @Html.DisplayNameFor(model => model.PassengerFirstName)
+            </th>
+            <th class="column7">
+                @Html.DisplayNameFor(model => model.PassengerLastName)
+            </th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location_Depart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location_Arrival)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dept_Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Arr_Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassengerFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassengerLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeatNumber)
-            </td>
-
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="column1">
+                    @Html.DisplayFor(modelItem => item.Location_Depart)
+                </td>
+                <td class="column2">
+                    @Html.DisplayFor(modelItem => item.Location_Arrival)
+                </td>
+                <td class="column3">
+                    @Html.DisplayFor(modelItem => item.Dept_Time)
+                </td>
+                <td class="column4">
+                    @Html.DisplayFor(modelItem => item.Arr_Time)
+                </td>
+                <td class="column5">
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td class="column6">
+                    @Html.DisplayFor(modelItem => item.PassengerFirstName)
+                </td>
+                <td class="column7">
+                    @Html.DisplayFor(modelItem => item.PassengerLastName)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
 
 </table>

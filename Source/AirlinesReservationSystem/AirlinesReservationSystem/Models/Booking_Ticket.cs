@@ -27,8 +27,6 @@ namespace AirlinesReservationSystem
 
         public string PassengerNumberId { get; set; }
 
-        [Display(Name = "Choose Seat Number")]
-        [Required]
         public int? SeatDetailByFlightId { get; set; }
 
         public string PassengerEmail { get; set; }
