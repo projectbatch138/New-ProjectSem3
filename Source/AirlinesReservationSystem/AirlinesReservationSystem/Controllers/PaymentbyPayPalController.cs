@@ -148,7 +148,7 @@ namespace AirlinesReservationSystem.Controllers
                 return View("Failure");
             }
 
-            return View("Succsess");
+            return RedirectToAction("PaymentSuccess","Manage");
         }
 
     }

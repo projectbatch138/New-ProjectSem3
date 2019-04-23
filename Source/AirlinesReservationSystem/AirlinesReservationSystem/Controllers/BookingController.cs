@@ -32,47 +32,63 @@ namespace AirlinesReservationSystem.Controllers
 
 
         [HttpPost]
-        public ActionResult Booking([Bind(Include = "Booking_TicketId,PassengerFirstName,PassengerLastName,PassengerNumberId,PassengerEmail,PassengerPhoneNumber")] Booking_Ticket[] bookings)
+        public ActionResult Booking(int FlightId, int SeatClassId, [Bind(Include = "Booking_TicketId,PassengerFirstName,PassengerLastName,PassengerNumberId,PassengerEmail,PassengerPhoneNumber")] Booking_Ticket[] bookings)
         {
             int i = 0;
-            BookingViewModel Departflight = new BookingViewModel();
-
-            Departflight = (BookingViewModel)TempData["Depart"];
-
-            foreach (var booking in bookings)
+            //Insert Booking Depart One Way
+            if (TempData["DepartFlight"] == null)
             {
-                booking.FlightId = Departflight.Flightid;
-                booking.DiscountId = Departflight.DiscountId;
-                booking.PriceId = Departflight.PriceId;
-                booking.ReservationModId = 1;
-                booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
-                booking.UserId = HttpContext.User.Identity.GetUserId();
-                _booking.Insert(booking);
-                _booking.Save();
-                TempData["CodeDepart" + i] = booking.CodeTicket;
-                if (TempData["Arrivalflight"] != null)
+                BookingViewModel Departflight = new BookingViewModel();
+                Departflight = (BookingViewModel)TempData["Depart" + FlightId + SeatClassId];
+                foreach (var booking in bookings)
                 {
+                    booking.FlightId = FlightId;
+                    booking.DiscountId = Departflight.DiscountId;
+                    booking.PriceId = Departflight.PriceId;
+                    booking.ReservationModId = 1;
+                    booking.SeatClassId = SeatClassId;
+                    booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
+                    booking.UserId = HttpContext.User.Identity.GetUserId();
+                    _booking.Insert(booking);
+                    _booking.Save();
+                    TempData["CodeDepart" + i] = booking.CodeTicket;
+                }
+            }
+            else
+            {
+                //Insert Booking Round
+                BookingViewModel Departflight = new BookingViewModel();
+
+                Departflight = (BookingViewModel)TempData["DepartFlight"];
+                foreach (var booking in bookings)
+                {
+                    booking.FlightId = Departflight.Flightid;
+                    booking.DiscountId = Departflight.DiscountId;
+                    booking.PriceId = Departflight.PriceId;
+                    booking.ReservationModId = 1;
+                    booking.SeatClassId = SeatClassId;
+                    booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
+                    booking.UserId = HttpContext.User.Identity.GetUserId();
+                    _booking.Insert(booking);
+                    _booking.Save();
+                    TempData["CodeDepart" + i] = booking.CodeTicket;
                     BookingViewModel Arrivalflight = new BookingViewModel();
-                    Arrivalflight = (BookingViewModel)TempData["Arrivalflight"];
+                    Arrivalflight = (BookingViewModel)TempData["Arrivalflight" + FlightId + SeatClassId];
 
                     booking.FlightId = Arrivalflight.Flightid;
                     booking.DiscountId = Arrivalflight.DiscountId;
                     booking.PriceId = Arrivalflight.PriceId;
                     booking.ReservationModId = 1;
+                    booking.SeatClassId = Arrivalflight.SeatClassId;
                     booking.CodeTicket = booking.FlightId.ToString() + booking.Booking_TicketId.ToString();
                     _booking.Insert(booking);
                     TempData["CodeArrival" + i] = booking.CodeTicket;
                     _booking.Save();
+                    TempData["Email" + i] = booking.PassengerEmail.ToString();
+                    i++;
                 }
-
-                //_SeatNumber.Update(seat);
-                //_SeatNumber.Save();
                 
-
-                TempData["Email" + i] = booking.PassengerEmail.ToString();
-                i++;
             }
-
 
             TempData["Sum"] = i;
             return RedirectToAction("Contact");
@@ -82,6 +98,7 @@ namespace AirlinesReservationSystem.Controllers
 
         public async Task<ActionResult> Contact()
         {
+            //Sent Mail
             if (!ModelState.IsValid)
             {
 
@@ -109,6 +126,8 @@ namespace AirlinesReservationSystem.Controllers
             }
             return RedirectToAction("Payment", "Manage");
         }
+
+        
 
 
     }

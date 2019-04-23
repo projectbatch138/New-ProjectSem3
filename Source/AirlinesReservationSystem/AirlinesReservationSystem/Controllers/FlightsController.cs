@@ -41,66 +41,31 @@ namespace AirlinesReservationSystem.Controllers
                 TempData["DataArrival"] = new SelectList(reponsitoryLocation.SelectAll(), "LocationId", "City");
                 return View("~/Views/Home/Index.cshtml");
             }
-
+            //Get Depart Flights
             var flight = reponsitoryFlights.SelectAll();
             var flightdepart = flight
-                .Where(x => x.Dept_Time.CompareTo(flightVm.Time_Depart) > 0)
+                .Where(x => x.Dept_Time.CompareTo(flightVm.Time_Depart) > 0 && x.Dept_Time.CompareTo(DateTime.Now) > 0)
                 .Where(x => x.Router.AirportDepart.Location.LocationId == flightVm.Location_Depart)
                 .Where(x => x.Router.AirportArrival.Location.LocationId == flightVm.Location_Arrival)
                 .ToList();
-            var seatclasses = _Seatclass.SelectAll();
-            ViewBag.SeatClass = new List<SeatClass>();
-            ViewBag.SeatClass = seatclasses;
-
-            var seatbyflight = reponsitorySeatDetailByFlight.SelectAll();
-            ViewBag.SeatClassByFlight = new List<SeatDetailByFlight>();
-            ViewBag.SeatClassByFlight = seatbyflight;
-            List<InventoryTickets> inventories = new List<InventoryTickets>();
-            foreach (var flightdep in flightdepart)
+            if (flightdepart.Count == 0)
             {
-                foreach (var seatclass in seatclasses)
-                {
-                    InventoryTickets inventory = new InventoryTickets
-                    {
-                        FlightId = flightdep.Flightid,
-                        SeatClassId = seatclass.SeatClassId
-                    };
-                    QuantitySeatClass seat = new QuantitySeatClass();
-                    seat = _quantitySeat.SelectAll().Where(x => x.PlaneId == flightdep.PlaneId).Where(x => x.SeatClassId == seatclass.SeatClassId).FirstOrDefault();
-                    int countBooking = _booking.SelectAll().Where(x => x.FlightId == flightdep.Flightid).Where(x => x.SeatClassId == seatclass.SeatClassId).Where(x => x.ReservationModId == 1 || x.ReservationModId == 2).Count();
-                    inventory.Inventory = (seat.Quantity - countBooking);
-                    inventories.Add(inventory);
-                }
-                
+                return View("NotHaveFlight");
             }
-
-            //var seatnumber = _seatnumber.SelectAll();
-            ViewBag.Inventories = inventories;
-
-
-            var Price = _price.SelectAll();
-            ViewBag.Price = new List<Price>();
-            ViewBag.Price = Price;
-
-            var Discount = _Discount.SelectAll();
-            ViewBag.Discount = new List<DiscountDetail>();
-            ViewBag.Discount = Discount;
-            TempData["Adults"] = flightVm.Adults;
-            if (flightVm.Trip == "Round")
+            else
             {
-                var flightarival = flight
-                .Where(x => x.Dept_Time.CompareTo(flightVm.Time_Arrival) > 0)
-                .Where(x => x.Router.AirportDepart.Location.LocationId == flightVm.Location_Arrival)
-                .Where(x => x.Router.AirportArrival.Location.LocationId == flightVm.Location_Depart)
-                .ToList();
-                ViewBag.FlightArrival = new List<Flight>();
-                ViewBag.FlightArrival = flightarival;
-                List<InventoryTickets> inventoriesArr = new List<InventoryTickets>();
-                foreach (var flightdep in flightarival)
+                //Get Seat Class
+                var seatclasses = _Seatclass.SelectAll();
+                ViewBag.SeatClass = new List<SeatClass>();
+                ViewBag.SeatClass = seatclasses;
+
+                //Get Inventory seat by Seat Class and Flight
+                List<InventoryTickets> inventories = new List<InventoryTickets>();
+                foreach (var flightdep in flightdepart)
                 {
                     foreach (var seatclass in seatclasses)
                     {
-                        InventoryTickets inventoryArr = new InventoryTickets
+                        InventoryTickets inventory = new InventoryTickets
                         {
                             FlightId = flightdep.Flightid,
                             SeatClassId = seatclass.SeatClassId
@@ -108,37 +73,88 @@ namespace AirlinesReservationSystem.Controllers
                         QuantitySeatClass seat = new QuantitySeatClass();
                         seat = _quantitySeat.SelectAll().Where(x => x.PlaneId == flightdep.PlaneId).Where(x => x.SeatClassId == seatclass.SeatClassId).FirstOrDefault();
                         int countBooking = _booking.SelectAll().Where(x => x.FlightId == flightdep.Flightid).Where(x => x.SeatClassId == seatclass.SeatClassId).Where(x => x.ReservationModId == 1 || x.ReservationModId == 2).Count();
-                        inventoryArr.Inventory = (seat.Quantity - countBooking);
-                        inventoriesArr.Add(inventoryArr);
+                        inventory.Inventory = (seat.Quantity - countBooking);
+                        inventories.Add(inventory);
                     }
 
                 }
 
                 //var seatnumber = _seatnumber.SelectAll();
-                TempData["InventoriesArr"] = inventoriesArr;
+                ViewBag.Inventories = inventories;
+
+                //Get Price
+                var Price = _price.SelectAll();
+                ViewBag.Price = new List<Price>();
+                ViewBag.Price = Price;
+                //Get Discount
+                var Discount = _Discount.SelectAll();
+                ViewBag.Discount = new List<DiscountDetail>();
+                ViewBag.Discount = Discount;
+                TempData["Adults"] = flightVm.Adults;
+                //Get Arrival Flight
+                if (flightVm.Trip == "Round")
+                {
+                    var flightarival = flight
+                    .Where(x => x.Dept_Time.CompareTo(flightVm.Time_Arrival) > 0 && x.Dept_Time.CompareTo(DateTime.Now) > 0)
+                    .Where(x => x.Router.AirportDepart.Location.LocationId == flightVm.Location_Arrival)
+                    .Where(x => x.Router.AirportArrival.Location.LocationId == flightVm.Location_Depart)
+                    .ToList();
+                    ViewBag.FlightArrival = new List<Flight>();
+                    ViewBag.FlightArrival = flightarival;
+                    List<InventoryTickets> inventoriesArr = new List<InventoryTickets>();
+                    foreach (var flightdep in flightarival)
+                    {
+                        foreach (var seatclass in seatclasses)
+                        {
+                            InventoryTickets inventoryArr = new InventoryTickets
+                            {
+                                FlightId = flightdep.Flightid,
+                                SeatClassId = seatclass.SeatClassId
+                            };
+                            QuantitySeatClass seat = new QuantitySeatClass();
+                            seat = _quantitySeat.SelectAll().Where(x => x.PlaneId == flightdep.PlaneId).Where(x => x.SeatClassId == seatclass.SeatClassId).FirstOrDefault();
+                            int countBooking = _booking.SelectAll().Where(x => x.FlightId == flightdep.Flightid).Where(x => x.SeatClassId == seatclass.SeatClassId).Where(x => x.ReservationModId == 1 || x.ReservationModId == 2).Count();
+                            inventoryArr.Inventory = (seat.Quantity - countBooking);
+                            inventoriesArr.Add(inventoryArr);
+                        }
+
+                    }
+
+                    //var seatnumber = _seatnumber.SelectAll();
+                    TempData["InventoriesArr"] = inventoriesArr;
+                }
             }
+           
             return View(flightdepart);
 
         }
 
         public ActionResult ArrivalFlight()
         {
-            var seatclass = _Seatclass.SelectAll();
-            ViewBag.SeatClass = new List<SeatClass>();
-            ViewBag.SeatClass = seatclass;
+            if (ViewBag.FlightArrival == null)
+            {
+                return View("NotHaveFlight");
+            }
+            else
+            {
+                string FlightID = Request.QueryString["FlightId"];
+                string SeatClassID = Request.QueryString["SeatClassId"];
+                TempData["DepartFlight"] = TempData["Depart" + FlightID + SeatClassID];
 
-            var seatbyflight = reponsitorySeatDetailByFlight.SelectAll();
-            ViewBag.SeatClassByFlight = new List<SeatDetailByFlight>();
-            ViewBag.SeatClassByFlight = seatbyflight;
+                var seatclass = _Seatclass.SelectAll();
+                ViewBag.SeatClass = new List<SeatClass>();
+                ViewBag.SeatClass = seatclass;
 
-            var Price = _price.SelectAll();
-            ViewBag.Price = new List<Price>();
-            ViewBag.Price = Price;
+                var Price = _price.SelectAll();
+                ViewBag.Price = new List<Price>();
+                ViewBag.Price = Price;
 
-            var Discount = _Discount.SelectAll();
-            ViewBag.Discount = new List<DiscountDetail>();
-            ViewBag.Discount = Discount;
+                var Discount = _Discount.SelectAll();
+                ViewBag.Discount = new List<DiscountDetail>();
+                ViewBag.Discount = Discount;
 
+                
+            }
             return View();
         }
     }

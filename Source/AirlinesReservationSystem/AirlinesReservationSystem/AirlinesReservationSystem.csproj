@@ -719,8 +719,9 @@
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Manage\HistoryBooking.cshtml" />
     <Content Include="Views\PaymentbyPayPal\Failure.cshtml" />
-    <Content Include="Views\PaymentbyPayPal\Succsess.cshtml" />
+    <Content Include="Views\PaymentbyPayPal\Success.cshtml" />
     <Content Include="Views\Flights\ArrivalFlight.cshtml" />
+    <Content Include="Views\Flights\NotHaveFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
