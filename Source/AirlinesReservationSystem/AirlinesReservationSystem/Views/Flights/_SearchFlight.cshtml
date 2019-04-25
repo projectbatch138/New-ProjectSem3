@@ -1,8 +1,50 @@
 ﻿@model AirlinesReservationSystem.ViewModels.FlightViewModel
+
+<script type="text/javascript">
+    function Validate() {
+        if (document.getElementById("from").value != document.getElementById("to").value) {
+            if (document.getElementById("one-way").value == "OneWay") {
+                if (document.getElementById("from").value == "" ||
+                    document.getElementById("to").value == "" ||
+                    document.getElementById("depart").value == ""
+                ) {
+                    alert("Please fill all the required fields!");
+                    document.myForm.Name.focus();
+                    return false;
+                }
+                return true;
+            }
+            if (document.getElementById("roundtrip").value == "Round") {
+                    if (document.getElementById("from").value == "" ||
+                        document.getElementById("to").value == "" ||
+                        document.getElementById("depart").value == "" ||
+                        document.getElementById("return").value == ""
+                    ) {
+                        alert("Please fill all the required fields!");
+                        document.myForm.Name.focus();
+                        return false;
+                    }
+                }
+                else if (document.getElementById("depart").value > document.getElementById("return").value) {
+                    document.getElementById("depart").value = new Date();
+                    document.getElementById("return").value = new Date();
+                    alert("Please choose the reasonable date!");
+                    document.myForm.Name.focus();
+                    return false;
+                } 
+            }
+         else {
+            alert("Please choose your reasonable destination!");
+            document.myForm.Name.focus();
+            return false;
+        }  
+    }
+    
+</script>
+
 <div id="booking" class="container-fluid">
     <div>
         <div class="container">
-
             <div class="row">
                 <div class="col-md-4 col-sm-5" style="display:contents">
                     <div class="booking-cta">
@@ -11,7 +53,7 @@
                 </div>
                 <div class="col-md-7 col-sm-7">
                     <div class="booking-form">
-                        @using (Html.BeginForm("Index", "Flights", FormMethod.Post, new { @class = "ui large form" }))
+                        @using (Html.BeginForm("Index", "Flights", FormMethod.Post, new { @class = "ui large form", @onsubmit = "return(Validate());" }))
                         {
                             <div class="form-group">
                                 <div class="form-checkbox">
@@ -31,14 +73,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Flying from</span>
-                                        @Html.DropDownListFor(model => model.Location_Depart, (IEnumerable<SelectListItem>)TempData["DataDepart"], "Select City", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownListFor(model => model.Location_Depart, (IEnumerable<SelectListItem>)TempData["DataDepart"], "Select City", htmlAttributes: new { @class = "form-control", @id = "from"})
                                         @Html.ValidationMessageFor(model => model.Location_Depart, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <span class="form-label">Flyning to</span>
-                                        @Html.DropDownListFor(model => model.Location_Arrival, (IEnumerable<SelectListItem>)TempData["DataArrival"], "Select City", htmlAttributes: new { @class = "form-control" })
+                                        <span class="form-label">Flying to</span>
+                                        @Html.DropDownListFor(model => model.Location_Arrival, (IEnumerable<SelectListItem>)TempData["DataArrival"], "Select City", htmlAttributes: new { @class = "form-control", @id = "to" })
                                         @Html.ValidationMessageFor(model => model.Location_Arrival, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -48,14 +90,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Departing</span>
-                                        @Html.EditorFor(model => model.Time_Depart, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                        @Html.EditorFor(model => model.Time_Depart, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "depart" } })
                                         @Html.ValidationMessageFor(model => model.Time_Depart, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Returning</span>
-                                        @Html.EditorFor(model => model.Time_Arrival, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                        @Html.EditorFor(model => model.Time_Arrival, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "return" } })
                                         @Html.ValidationMessageFor(model => model.Time_Arrival, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -95,7 +137,9 @@
             </div>
         </div>
 
-</div>
+    </div>
+
+    
 
         </div>
         <div style="clear:both; margin-top:80px">

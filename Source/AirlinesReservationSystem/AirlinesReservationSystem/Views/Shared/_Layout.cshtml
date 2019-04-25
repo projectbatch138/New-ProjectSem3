@@ -53,24 +53,23 @@
 
     <!--Navbar -->
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <div class="navbar-brand">
+        @Html.ActionLink("Asp Airlines","Index","Home")</div>
+=======
+        <a class="navbar-brand" href="#">ASP Airline</a>
+>>>>>>> d61f144de40c235d63b5a3c7ae2f56c70d0ba36d
+=======
+        <a class="navbar-brand" href="#">ASP Airline</a>
+>>>>>>> d61f144de40c235d63b5a3c7ae2f56c70d0ba36d
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
                 aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <i class="fab fa-facebook-f"></i> Facebook
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                </li>
+                
                 @Html.Partial("_LoginPartial")
 
             </ul>
@@ -97,7 +96,8 @@
                         <h5 class="mb-1">Register for free</h5>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
+                        <div class="btn btn-outline-white btn-rounded">
+                        @Html.ActionLink("Sign up!","Register","Account")</div>
                     </li>
                 </ul>
                 <!-- Call to action -->

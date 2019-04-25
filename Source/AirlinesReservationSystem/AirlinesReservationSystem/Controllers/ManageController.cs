@@ -342,7 +342,7 @@ namespace AirlinesReservationSystem.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
-
+        //View Payment Booking
         public ActionResult Payment()
         {
             string userid = HttpContext.User.Identity.GetUserId();
@@ -389,7 +389,7 @@ namespace AirlinesReservationSystem.Controllers
             TempData["listpayment"] = Listpayment.ToList();
             return View(Listpayment);
         }
-
+        //Cancel Booking
         public ActionResult Cancel(int BookingId)
         {
             Booking_Ticket booking = new Booking_Ticket();
@@ -405,7 +405,7 @@ namespace AirlinesReservationSystem.Controllers
             return RedirectToAction("Payment");
         }
 
-
+        //View History Booking
         public ActionResult HistoryBooking()
         {
             string userid = HttpContext.User.Identity.GetUserId();
@@ -452,6 +452,20 @@ namespace AirlinesReservationSystem.Controllers
 
             return View(Listpayment);
         }
+        //Set Booking Pay Success
+        public ActionResult PaymentSuccess()
+        {
+            List<Booking_Ticket> PayBooking = new List<Booking_Ticket>();
+            PayBooking = _booking.SelectAll().Where(x => x.UserId == HttpContext.User.Identity.GetUserId()).Where(x => x.ReservationModId == 1).ToList<Booking_Ticket>();
+            foreach (var item in PayBooking)
+            {
+                item.ReservationModId = 2;
+                _booking.Update(item);
+            }
+            _booking.Save();
+            return View("~/Views/PaymentbyPayPal/Success.cshtml");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
